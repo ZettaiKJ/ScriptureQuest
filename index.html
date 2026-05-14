@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScriptureQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #0b1521;
+  --navy-mid:   #192840;
+  --navy-light: #223350;
+  --gold:       #c9a84c;
+  --gold-light: #e5c86a;
+  --gold-dim:   #7a6020;
+  --crimson:    #8b1a2c;
+  --parch:      #f2ead8;
+  --text:       #e8dfc8;
+  --text-mid:   #9a8c6c;
+  --green:      #3a8f5c;
+  --red:        #c0394a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Lora',Georgia,serif;
+  background:var(--navy);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 60% at 15% 40%,rgba(201,168,76,.06) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 85% 20%,rgba(139,26,44,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 60% 80%,rgba(50,120,80,.05) 0%,transparent 70%);
+}
+
+/* ── SCREENS ── */
+.screen{display:none;position:relative;z-index:1}
+.screen.active{display:block}
+#auth-screen.active{display:flex}
+
+/* ══ AUTH ══ */
+#auth-screen{
+  min-height:100vh;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 1rem;
+}
+.auth-logo{text-align:center;margin-bottom:2.5rem}
+.auth-cross{
+  font-size:3.5rem;color:var(--gold);display:block;
+  animation:floatCross 3s ease-in-out infinite;
+}
+@keyframes floatCross{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.auth-logo h1{
+  font-family:'Cinzel',serif;font-size:2.6rem;font-weight:900;
+  color:var(--gold);letter-spacing:.12em;line-height:1;
+}
+.auth-logo p{color:var(--text-mid);font-style:italic;margin-top:.5rem;font-size:.95rem}
+.auth-verse{
+  font-size:.78rem;color:var(--text-mid);font-style:italic;margin-top:.4rem;
+  opacity:.7;
+}
+.auth-card{
+  background:var(--navy-mid);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:18px;padding:2.25rem;
+  width:100%;max-width:420px;
+  box-shadow:0 24px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(201,168,76,.1);
+}
+.auth-tabs{display:flex;border-bottom:1px solid rgba(201,168,76,.18);margin-bottom:1.75rem}
+.auth-tab{
+  flex:1;background:none;border:none;color:var(--text-mid);
+  font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.12em;
+  padding:.7rem;cursor:pointer;transition:all .2s;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.auth-form{display:none}
+.auth-form.active{display:block}
+.form-group{margin-bottom:1.1rem}
+.form-group label{
+  display:block;font-size:.72rem;letter-spacing:.12em;
+  font-family:'Cinzel',serif;color:var(--text-mid);margin-bottom:.45rem;
+}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:.7rem 1rem;
+  background:var(--navy-light);border:1px solid rgba(201,168,76,.18);
+  border-radius:9px;color:var(--text);
+  font-family:'Lora',serif;font-size:.92rem;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12);
+}
+.form-group select{cursor:pointer}
+.form-group textarea{resize:vertical;min-height:80px}
+.btn-primary{
+  width:100%;padding:.85rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  border:none;border-radius:9px;
+  color:var(--navy);font-family:'Cinzel',serif;
+  font-size:.88rem;font-weight:700;letter-spacing:.12em;
+  cursor:pointer;transition:all .25s;
+}
+.btn-primary:hover:not(:disabled){
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.3);
+}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.divider{
+  text-align:center;color:var(--text-mid);font-size:.75rem;
+  margin:1.1rem 0;position:relative;
+}
+.divider::before,.divider::after{
+  content:'';position:absolute;top:50%;width:42%;height:1px;
+  background:rgba(201,168,76,.15);
+}
+.divider::before{left:0}
+.divider::after{right:0}
+.btn-google{
+  width:100%;padding:.85rem;
+  background:var(--navy-light);border:1px solid rgba(201,168,76,.25);
+  border-radius:9px;color:var(--text);
+  font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.07em;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:.75rem;
+}
+.btn-google:hover{border-color:var(--gold);background:rgba(201,168,76,.06)}
+
+/* ══ NAVBAR ══ */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(11,21,33,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,168,76,.12);
+  padding:0 1.5rem;height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:var(--gold);letter-spacing:.12em}
+.nav-right{display:flex;align-items:center;gap:.85rem}
+.nav-avatar{
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid var(--gold);object-fit:cover;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.nav-avatar:hover{transform:scale(1.08);box-shadow:0 0 12px rgba(201,168,76,.4)}
+.btn-signout{
+  background:none;border:1px solid rgba(201,168,76,.25);
+  color:var(--text-mid);font-family:'Cinzel',serif;
+  font-size:.72rem;letter-spacing:.1em;
+  padding:.35rem .75rem;border-radius:6px;cursor:pointer;transition:all .2s;
+}
+.btn-signout:hover{border-color:var(--crimson);color:#e07080}
+
+.page-content{
+  padding-top:78px;min-height:100vh;
+  padding-bottom:2rem;padding-left:1.5rem;padding-right:1.5rem;
+  max-width:980px;margin:0 auto;
+}
+.page-content.wide{max-width:1200px}
+
+/* ══ LOBBY ══ */
+.lobby-header{text-align:center;padding:2rem 0 1.5rem}
+.lobby-header h2{
+  font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);letter-spacing:.05em;
+}
+.lobby-header p{color:var(--text-mid);margin-top:.45rem;font-style:italic}
+.current-team-banner{
+  background:linear-gradient(135deg,var(--navy-mid),rgba(201,168,76,.08));
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:16px;padding:1.5rem;
+  display:flex;align-items:center;gap:1.25rem;
+  margin-bottom:1.5rem;flex-wrap:wrap;
+}
+.team-av-lg{
+  width:68px;height:68px;border-radius:50%;
+  border:3px solid var(--gold);object-fit:cover;flex-shrink:0;
+}
+.team-info-brief h3{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold)}
+.team-code-sm{
+  font-family:'Cinzel',serif;font-size:.72rem;
+  color:var(--text-mid);letter-spacing:.2em;margin-top:.2rem;
+}
+.team-count-sm{color:var(--text-mid);font-size:.82rem;margin-top:.2rem}
+.btn-enter{
+  margin-left:auto;padding:.7rem 1.4rem;
+  background:var(--gold);border:none;border-radius:9px;
+  color:var(--navy);font-family:'Cinzel',serif;
+  font-size:.82rem;font-weight:700;letter-spacing:.1em;
+  cursor:pointer;transition:all .2s;flex-shrink:0;
+}
+.btn-enter:hover{background:var(--gold-light);transform:translateY(-1px)}
+.lobby-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.lobby-grid{grid-template-columns:1fr}}
+.lobby-card{
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);
+  border-radius:16px;padding:1.75rem;
+}
+.lobby-card h3{
+  font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);
+  letter-spacing:.08em;margin-bottom:1.25rem;
+}
+
+/* ══ TEAM SCREEN ══ */
+.team-header{
+  display:flex;align-items:center;gap:1.25rem;
+  padding:1.5rem 0;border-bottom:1px solid rgba(201,168,76,.12);
+  margin-bottom:1.5rem;flex-wrap:wrap;
+}
+.team-av-wrap{position:relative;cursor:pointer;flex-shrink:0}
+.team-av-wrap img{
+  width:62px;height:62px;border-radius:50%;
+  border:3px solid var(--gold);object-fit:cover;display:block;
+}
+.av-overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,.55);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s;font-size:1.2rem;
+}
+.team-av-wrap:hover .av-overlay{opacity:1}
+.team-name-sec h2{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold)}
+.team-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.3rem}
+.badge{
+  font-size:.68rem;letter-spacing:.1em;font-family:'Cinzel',serif;
+  padding:.18rem .55rem;border-radius:5px;
+  background:rgba(201,168,76,.12);color:var(--gold);
+  border:1px solid rgba(201,168,76,.25);
+}
+.badge.leader{background:rgba(201,168,76,.22);border-color:var(--gold)}
+.code-pill{
+  display:inline-block;
+  background:var(--navy-light);border:1px dashed rgba(201,168,76,.4);
+  border-radius:7px;padding:.4rem .9rem;
+  font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.3em;
+  color:var(--gold);cursor:pointer;transition:all .2s;margin-top:.5rem;
+}
+.code-pill:hover{background:rgba(201,168,76,.08)}
+.code-hint{font-size:.68rem;color:var(--text-mid);font-style:italic;margin-top:.2rem}
+.header-actions{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap}
+.btn-secondary{
+  padding:.5rem 1rem;background:none;
+  border:1px solid rgba(201,168,76,.28);color:var(--text);
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;
+  border-radius:7px;cursor:pointer;transition:all .2s;
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.btn-danger{
+  padding:.5rem 1rem;
+  background:rgba(139,26,44,.18);border:1px solid rgba(139,26,44,.4);
+  color:#e07080;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;
+  border-radius:7px;cursor:pointer;transition:all .2s;
+}
+.btn-danger:hover{background:rgba(139,26,44,.35)}
+
+/* ── Tabs ── */
+/* ── Tabs ── */
+.tabs-nav{
+  display:flex;
+  border-bottom:1px solid rgba(201,168,76,.12);
+  margin-bottom:1.5rem;
+
+  overflow-x:auto;
+  overflow-y:hidden; /* FIXES vertical overflow */
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+
+  align-items:center;
+}
+
+.tabs-nav::-webkit-scrollbar{
+  display:none;
+}
+
+.tab-btn{
+  background:none;
+  border:none;
+  color:var(--text-mid);
+
+  font-family:'Cinzel',serif;
+  font-size:.78rem;
+  letter-spacing:.1em;
+
+  padding:.7rem 1.1rem;
+  cursor:pointer;
+  transition:all .2s;
+
+  border-bottom:2px solid transparent;
+
+  white-space:nowrap;
+  flex-shrink:0; /* prevents squishing */
+}
+
+.tab-btn.active{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+.tab-btn{
+  background:none;border:none;color:var(--text-mid);
+  font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.1em;
+  padding:.7rem 1.1rem;cursor:pointer;transition:all .2s;
+  border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;
+}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* ── CHAT ── */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 300px);min-height:380px}
+.chat-box{
+  flex:1;overflow-y:auto;padding:1rem;
+  background:var(--navy-mid);
+  border:1px solid rgba(201,168,76,.1);border-radius:12px 12px 0 0;
+  display:flex;flex-direction:column;gap:.9rem;
+}
+.chat-box::-webkit-scrollbar{width:4px}
+.chat-box::-webkit-scrollbar-thumb{background:rgba(201,168,76,.2);border-radius:2px}
+.chat-row{display:flex;gap:.65rem;align-items:flex-end}
+.chat-row.mine{flex-direction:row-reverse}
+.chat-av{
+  width:32px;height:32px;border-radius:50%;
+  border:1.5px solid rgba(201,168,76,.3);object-fit:cover;flex-shrink:0;
+}
+.chat-bubble{
+  max-width:68%;background:var(--navy-light);
+  border-radius:12px;padding:.65rem .9rem;
+  border:1px solid rgba(201,168,76,.1);
+}
+.chat-row.mine .chat-bubble{
+  background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.22);
+}
+.chat-sender{
+  font-family:'Cinzel',serif;font-size:.64rem;
+  color:var(--gold);letter-spacing:.05em;margin-bottom:.2rem;
+}
+.chat-txt{font-size:.88rem;line-height:1.5;color:var(--text)}
+.chat-time{font-size:.65rem;color:var(--text-mid);margin-top:.2rem}
+.chat-input-row{
+  display:flex;gap:.65rem;padding:.65rem;
+  background:var(--navy-light);
+  border:1px solid rgba(201,168,76,.12);border-top:none;
+  border-radius:0 0 12px 12px;
+}
+.chat-in{
+  flex:1;background:var(--navy);border:1px solid rgba(201,168,76,.15);
+  border-radius:8px;padding:.55rem .9rem;color:var(--text);
+  font-family:'Lora',serif;font-size:.88rem;outline:none;
+  resize:none;height:42px;transition:border-color .2s;
+}
+.chat-in:focus{border-color:var(--gold)}
+.btn-send{
+  background:var(--gold);border:none;border-radius:8px;
+  padding:0 1rem;color:var(--navy);font-size:1.1rem;
+  cursor:pointer;transition:all .2s;
+}
+.btn-send:hover{background:var(--gold-light)}
+
+/* ── MEMBERS ── */
+.members-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;
+}
+.member-card{
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.15);
+  border-radius:12px;padding:1.4rem;text-align:center;
+}
+.member-card img{
+  width:60px;height:60px;border-radius:50%;
+  border:2px solid var(--gold);object-fit:cover;margin-bottom:.65rem;
+}
+.member-name{font-family:'Cinzel',serif;font-size:.82rem;color:var(--text);letter-spacing:.05em}
+.member-role{font-size:.72rem;color:var(--gold);margin-top:.2rem}
+.btn-kick{
+  margin-top:.65rem;background:rgba(139,26,44,.18);
+  border:1px solid rgba(139,26,44,.35);color:#e07080;
+  font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.1em;
+  padding:.28rem .75rem;border-radius:6px;cursor:pointer;transition:all .2s;
+}
+.btn-kick:hover{background:rgba(139,26,44,.38)}
+
+/* ── QUIZ ── */
+.quiz-lobby-wrap{max-width:560px;margin:0 auto;text-align:center;padding:2rem 0}
+.quiz-lobby-wrap h3{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold);margin-bottom:.75rem}
+.quiz-lobby-wrap p{color:var(--text-mid);font-style:italic;margin-bottom:1.75rem}
+.quiz-warn{color:#e07080;font-size:.85rem;margin-bottom:1rem}
+.btn-start{
+  padding:.95rem 3rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  border:none;border-radius:11px;color:var(--navy);
+  font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;letter-spacing:.15em;
+  cursor:pointer;transition:all .3s;box-shadow:0 4px 22px rgba(201,168,76,.3);
+}
+.btn-start:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.42)}
+.btn-start:disabled{opacity:.45;cursor:not-allowed}
+
+.quiz-card{max-width:680px;margin:0 auto}
+.q-meta{
+  display:flex;justify-content:space-between;
+  font-family:'Cinzel',serif;font-size:.78rem;color:var(--text-mid);letter-spacing:.08em;
+  margin-bottom:1rem;
+}
+.prog-bar{height:4px;background:rgba(201,168,76,.14);border-radius:2px;margin-bottom:1.75rem;overflow:hidden}
+.prog-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s ease}
+.q-text{
+  font-size:1.2rem;color:var(--text);line-height:1.65;
+  text-align:center;margin-bottom:1.75rem;padding:1.4rem 1.5rem;
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.15);
+  border-radius:12px;font-style:italic;
+}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:480px){.q-opts{grid-template-columns:1fr}}
+.q-opt{
+  padding:.9rem 1.25rem;background:var(--navy-mid);
+  border:1px solid rgba(201,168,76,.2);border-radius:10px;
+  color:var(--text);font-family:'Lora',serif;font-size:.9rem;
+  cursor:pointer;text-align:left;transition:all .2s;
+}
+.q-opt:hover:not(:disabled){border-color:var(--gold);background:rgba(201,168,76,.07)}
+.q-opt.correct{background:rgba(58,143,92,.22);border-color:#50c878;color:#a0e0b0}
+.q-opt.wrong{background:rgba(192,57,74,.2);border-color:var(--crimson);color:#e07080}
+.q-opt:disabled{cursor:default}
+.timer-ring{
+  width:52px;height:52px;margin:0 auto .75rem;
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.timer-svg{transform:rotate(-90deg);position:absolute;inset:0}
+.timer-num{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);z-index:1}
+
+.results-wrap{max-width:480px;margin:0 auto;text-align:center;padding:1.5rem 0}
+.results-wrap h3{font-family:'Cinzel',serif;font-size:1.75rem;color:var(--gold);margin-bottom:1.75rem}
+.score-big{
+  font-family:'Cinzel',serif;font-size:3rem;color:var(--gold);
+  display:block;line-height:1;
+}
+.score-label{color:var(--text-mid);font-style:italic;font-size:.9rem;margin-bottom:1.5rem}
+
+/* ── QUESTIONS ── */
+.q-upload-form{
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.2);
+  border-radius:14px;padding:1.75rem;margin-bottom:1.75rem;
+}
+.q-upload-form h3{font-family:'Cinzel',serif;color:var(--gold);font-size:.92rem;letter-spacing:.1em;margin-bottom:1.25rem}
+.opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+@media(max-width:480px){.opts-grid{grid-template-columns:1fr}}
+.q-list{display:flex;flex-direction:column;gap:.65rem}
+.q-item{
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.1);
+  border-radius:10px;padding:.9rem 1.1rem;
+  display:flex;align-items:flex-start;gap:.9rem;
+}
+.q-item-body{flex:1}
+.q-item-text{font-size:.88rem;color:var(--text);margin-bottom:.25rem}
+.q-item-ans{font-size:.75rem;color:#6dc88a;font-style:italic}
+.q-item-cat{
+  font-size:.65rem;color:var(--text-mid);font-family:'Cinzel',serif;
+  letter-spacing:.08em;margin-top:.2rem;
+}
+.btn-del{background:none;border:none;color:var(--text-mid);cursor:pointer;font-size:.95rem;transition:color .2s;flex-shrink:0}
+.btn-del:hover{color:#e07080}
+
+/* ── PROFILE MODAL ── */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:1rem;
+  backdrop-filter:blur(5px);
+}
+.modal-bg.hide{display:none}
+.modal-box{
+  background:var(--navy-mid);border:1px solid rgba(201,168,76,.3);
+  border-radius:18px;padding:2rem;width:100%;max-width:400px;position:relative;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);
+}
+.modal-box h3{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:.12em;margin-bottom:1.4rem}
+.btn-x{
+  position:absolute;top:1rem;right:1rem;background:none;border:none;
+  color:var(--text-mid);font-size:1.3rem;cursor:pointer;transition:color .2s;
+}
+.btn-x:hover{color:var(--text)}
+.prof-av-wrap{text-align:center;margin-bottom:1.4rem}
+.prof-av-wrap img{
+  width:90px;height:90px;border-radius:50%;border:3px solid var(--gold);
+  object-fit:cover;margin-bottom:.65rem;display:block;margin-left:auto;margin-right:auto;
+}
+.btn-chg-photo{
+  background:none;border:1px solid rgba(201,168,76,.28);color:var(--gold);
+  font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em;
+  padding:.35rem .9rem;border-radius:6px;cursor:pointer;transition:all .2s;
+}
+.btn-chg-photo:hover{background:rgba(201,168,76,.1)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:2rem;left:50%;
+  transform:translateX(-50%) translateY(120px);
+  background:var(--navy-light);border:1px solid rgba(201,168,76,.28);
+  border-radius:9px;padding:.65rem 1.4rem;
+  font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.06em;
+  color:var(--text);z-index:500;transition:transform .3s;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.err{border-color:rgba(192,57,74,.5);color:#e07080}
+.toast.ok{border-color:rgba(58,143,92,.5);color:#90e0b0}
+
+/* ── misc ── */
+.spinner{
+  width:38px;height:38px;border:3px solid rgba(201,168,76,.2);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .8s linear infinite;margin:2rem auto;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-msg{
+  text-align:center;color:var(--text-mid);font-style:italic;
+  font-size:.88rem;padding:2rem;
+}
+.hidden{display:none!important}
+.mt1{margin-top:1rem}
+</style>
+</head>
+<body>
+
+<!-- ══ AUTH ══ -->
+<div id="auth-screen" class="screen active">
+  <div class="auth-logo">
+    <span class="auth-cross">✝</span>
+    <h1>ScriptureQuest</h1>
+    <p>Test your knowledge of the Holy Word</p>
+    <div class="auth-verse">"Thy word is a lamp unto my feet" — Psalm 119:105</div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login" onclick="authTab(this,'login')">Sign In</button>
+      <button class="auth-tab" data-tab="register" onclick="authTab(this,'register')">Register</button>
+    </div>
+
+    <!-- Sign In -->
+    <div id="f-login" class="auth-form active">
+      <div class="form-group"><label>Email</label><input type="email" id="l-email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="l-pass" placeholder="••••••••"></div>
+      <button class="btn-primary" onclick="doLogin()">Enter the Quest</button>
+      <div class="divider">or</div>
+      <button class="btn-google" onclick="doGoogle()">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+    </div>
+
+    <!-- Register -->
+    <div id="f-register" class="auth-form">
+      <div class="form-group"><label>Display Name</label><input type="text" id="r-name" placeholder="Your name"></div>
+      <div class="form-group"><label>Email</label><input type="email" id="r-email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="r-pass" placeholder="At least 6 characters"></div>
+      <button class="btn-primary" onclick="doRegister()">Join the Quest</button>
+      <div class="divider">or</div>
+      <button class="btn-google" onclick="doGoogle()">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar hidden" id="navbar">
+  <div class="nav-brand">✝ ScriptureQuest</div>
+  <div class="nav-right">
+    <img src="" id="nav-av" class="nav-avatar" alt="me" onclick="openProfileModal()">
+    <button class="btn-signout" onclick="doSignOut()">Sign Out</button>
+  </div>
+</nav>
+
+<!-- ══ LOBBY ══ -->
+<div id="lobby-screen" class="screen">
+  <div class="page-content">
+    <div id="team-banner" class="current-team-banner hidden">
+      <img src="" id="ban-av" class="team-av-lg" alt="team">
+      <div class="team-info-brief">
+        <h3 id="ban-name"></h3>
+        <div class="team-code-sm" id="ban-code"></div>
+        <div class="team-count-sm" id="ban-count"></div>
+      </div>
+      <button class="btn-enter" onclick="enterTeam()">Enter Team →</button>
+    </div>
+
+    <div class="lobby-header">
+      <h2>Welcome, Seeker</h2>
+      <p>Form a fellowship to begin the Scripture Quest</p>
+    </div>
+
+    <div class="lobby-grid">
+      <div class="lobby-card">
+        <h3>✦ Create a Team</h3>
+        <div class="form-group"><label>Team Name</label><input type="text" id="c-team-name" placeholder="e.g. The Disciples"></div>
+        <button class="btn-primary" onclick="createTeam()">Create Team</button>
+      </div>
+      <div class="lobby-card">
+        <h3>✦ Join a Team</h3>
+        <div class="form-group"><label>Team Code</label><input type="text" id="j-code" placeholder="6-character code" maxlength="6" style="text-transform:uppercase;letter-spacing:.2em"></div>
+        <button class="btn-primary" onclick="joinTeam()">Join Team</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TEAM SCREEN ══ -->
+<div id="team-screen" class="screen">
+  <div class="page-content wide">
+
+    <div class="team-header">
+      <div class="team-av-wrap" id="team-av-wrap" onclick="changeTeamPhoto()">
+        <img src="" id="t-av" alt="team">
+        <div class="av-overlay" id="t-av-overlay">✎</div>
+      </div>
+      <div class="team-name-sec">
+        <h2 id="t-name">Team</h2>
+        <div class="team-meta">
+          <span class="badge" id="t-count">0/5</span>
+          <span class="badge leader" id="t-role">Member</span>
+        </div>
+        <div class="code-pill" id="t-code" onclick="copyCode()">------</div>
+        <div class="code-hint">Click to copy · Share with teammates</div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-danger" onclick="leaveTeam()">Leave Team</button>
+      </div>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab(this,'chat')">💬 Chat</button>
+      <button class="tab-btn" onclick="switchTab(this,'members')">👥 Members</button>
+      <button class="tab-btn" onclick="switchTab(this,'quiz')">⚔ Quiz</button>
+      <button class="tab-btn" onclick="switchTab(this,'questions')">📖 Questions</button>
+    </div>
+
+    <!-- CHAT -->
+    <div class="tab-pane active" id="pane-chat">
+      <div class="chat-wrap">
+        <div class="chat-box" id="chat-box"><div class="empty-msg">Loading messages…</div></div>
+        <div class="chat-input-row">
+          <textarea class="chat-in" id="chat-in" placeholder="Type a message…" onkeydown="chatKey(event)"></textarea>
+          <button class="btn-send" onclick="sendMsg()">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMBERS -->
+    <div class="tab-pane" id="pane-members">
+      <div class="members-grid" id="members-grid"><div class="empty-msg">Loading…</div></div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="tab-pane" id="pane-quiz">
+      <!-- Lobby -->
+      <div id="quiz-lobby" class="quiz-lobby-wrap">
+        <h3>⚔ Scripture Challenge</h3>
+        <p>Gather your fellowship and test your knowledge of the Holy Word.</p>
+        <div id="quiz-warn" class="quiz-warn hidden">⚠ Your team needs at least 2 members to compete!</div>
+        <div id="quiz-noq" class="quiz-warn hidden">📖 No questions uploaded yet — add some in the Questions tab!</div>
+        <button class="btn-start" id="btn-start" onclick="startQuiz()">Begin Challenge</button>
+      </div>
+      <!-- Active -->
+      <div id="quiz-active" class="quiz-card hidden">
+        <div class="q-meta">
+          <span id="q-counter">Question 1 / 10</span>
+          <span id="q-score">Score: 0</span>
+        </div>
+        <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+        <div class="q-text" id="q-text"></div>
+        <div class="q-opts" id="q-opts"></div>
+        <div style="text-align:center;margin-top:1rem">
+          <div class="timer-ring">
+            <svg class="timer-svg" width="52" height="52" viewBox="0 0 52 52">
+              <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(201,168,76,.15)" stroke-width="3"/>
+              <circle cx="26" cy="26" r="22" fill="none" stroke="var(--gold)" stroke-width="3"
+                stroke-dasharray="138.2" id="timer-circle" stroke-linecap="round"/>
+            </svg>
+            <span class="timer-num" id="timer-num">15</span>
+          </div>
+        </div>
+      </div>
+      <!-- Results -->
+      <div id="quiz-results" class="results-wrap hidden">
+        <h3>🏆 Quest Complete!</h3>
+        <span class="score-big" id="res-score">0</span>
+        <div class="score-label">points earned</div>
+        <div id="res-msg" style="color:var(--text-mid);font-style:italic;margin-bottom:1.5rem"></div>
+        <button class="btn-primary" style="max-width:200px;margin:0 auto" onclick="resetQuiz()">Play Again</button>
+      </div>
+    </div>
+
+    <!-- QUESTIONS -->
+    <div class="tab-pane" id="pane-questions">
+      <div style="max-width:700px;margin:0 auto">
+        <div class="q-upload-form">
+          <h3>📖 UPLOAD A QUESTION</h3>
+          <div class="form-group"><label>Question</label><input type="text" id="uq-q" placeholder="e.g. Who built the ark?"></div>
+          <div class="form-group"><label>Answer Options</label>
+            <div class="opts-grid">
+              <input type="text" id="uq-a" placeholder="A) ">
+              <input type="text" id="uq-b" placeholder="B) ">
+              <input type="text" id="uq-c" placeholder="C) ">
+              <input type="text" id="uq-d" placeholder="D) ">
+            </div>
+          </div>
+          <div class="form-group"><label>Correct Answer</label>
+            <select id="uq-ans">
+              <option value="">Select correct option…</option>
+              <option value="0">A</option><option value="1">B</option>
+              <option value="2">C</option><option value="3">D</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Category (optional)</label><input type="text" id="uq-cat" placeholder="e.g. Old Testament, Gospels, Epistles"></div>
+          <button class="btn-primary" onclick="uploadQuestion()">Upload Question</button>
+        </div>
+        <div id="q-list" class="q-list"><div class="empty-msg">No questions yet.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ PROFILE MODAL ══ -->
+<div class="modal-bg hide" id="prof-modal">
+  <div class="modal-box">
+    <button class="btn-x" onclick="closeProfileModal()">×</button>
+    <h3>MY PROFILE</h3>
+    <div class="prof-av-wrap">
+      <img src="" id="prof-av" alt="me">
+      <button class="btn-chg-photo" onclick="document.getElementById('file-prof').click()">Change Photo</button>
+    </div>
+    <div class="form-group"><label>Display Name</label><input type="text" id="prof-name"></div>
+    <button class="btn-primary" onclick="saveProfile()">Save Changes</button>
+  </div>
+</div>
+
+<!-- hidden file inputs -->
+<input type="file" id="file-prof" accept="image/*" class="hidden" onchange="uploadProfPhoto(event)">
+<input type="file" id="file-team" accept="image/*" class="hidden" onchange="uploadTeamPhoto(event)">
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ══ FIREBASE ══ -->
+<script type="module">
+import { initializeApp }                         from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+         GoogleAuthProvider, signInWithPopup, signOut as fbOut,
+         onAuthStateChanged, updateProfile }      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, collection,
+         addDoc, query, where, onSnapshot, orderBy, serverTimestamp,
+         updateDoc, arrayUnion, arrayRemove, deleteDoc, getDocs, limit }
+                                                 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL }
+                                                 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+/* ── Config ── */
+const app = initializeApp({
+  apiKey:"AIzaSyDQJJraJqe9AUVQo_3NidIHxULrdvkQZTk",
+  authDomain:"scripturequest-2dea9.firebaseapp.com",
+  projectId:"scripturequest-2dea9",
+  storageBucket:"scripturequest-2dea9.firebasestorage.app",
+  messagingSenderId:"31816266150",
+  appId:"1:31816266150:web:ab183957f0efbbf8e85f67",
+  measurementId:"G-ZPPFNJD51E"
+});
+const auth    = getAuth(app);
+const db      = getFirestore(app);
+const storage = getStorage(app);
+
+/* ── State ── */
+let me = null, meData = null, team = null;
+let unsubChat = null, unsubTeam = null, unsubQs = null;
+let allQuestions = [], quizSet = [], quizIdx = 0, quizScore = 0, quizAnswered = false;
+let timerInterval = null;
+
+const BLANK_AV = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23192840'/%3E%3Ctext x='40' y='55' font-size='30' text-anchor='middle' fill='%23c9a84c'%3E✝%3C/text%3E%3C/svg%3E";
+
+/* ── Helpers ── */
+function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast '+(type?type:'');
+  void t.offsetWidth; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+function genCode(){ const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; return Array.from({length:6},()=>c[Math.floor(Math.random()*c.length)]).join(''); }
+function fmtTime(ts){ if(!ts) return ''; const d=ts.toDate?ts.toDate():new Date(ts); return d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
+function av(url){ return url && url.length>10 ? url : BLANK_AV; }
+
+/* ── Expose globals ── */
+window.authTab = (btn,tab)=>{
+  document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('f-'+tab).classList.add('active');
+};
+window.doLogin = async()=>{
+  const e=document.getElementById('l-email').value, p=document.getElementById('l-pass').value;
+  if(!e||!p) return toast('Fill in all fields','err');
+  try{ await signInWithEmailAndPassword(auth,e,p); } catch(err){ toast(err.message,'err'); }
+};
+window.doRegister = async()=>{
+  const name=document.getElementById('r-name').value.trim();
+  const e=document.getElementById('r-email').value;
+  const p=document.getElementById('r-pass').value;
+  if(!name||!e||!p) return toast('Fill in all fields','err');
+  if(p.length<6) return toast('Password must be 6+ characters','err');
+  try{
+    const cred=await createUserWithEmailAndPassword(auth,e,p);
+    await updateProfile(cred.user,{displayName:name});
+    await setDoc(doc(db,'users',cred.user.uid),{displayName:name,email:e,photoURL:BLANK_AV,teamId:null,createdAt:serverTimestamp()});
+  } catch(err){ toast(err.message,'err'); }
+};
+window.doGoogle = async()=>{
+  try{
+    const cred=await signInWithPopup(auth,new GoogleAuthProvider());
+    const snap=await getDoc(doc(db,'users',cred.user.uid));
+    if(!snap.exists()) await setDoc(doc(db,'users',cred.user.uid),{displayName:cred.user.displayName||'Seeker',email:cred.user.email,photoURL:cred.user.photoURL||BLANK_AV,teamId:null,createdAt:serverTimestamp()});
+  } catch(err){ toast(err.message,'err'); }
+};
+window.doSignOut = async()=>{ cleanup(); await fbOut(auth); };
+
+/* ── Auth state ── */
+/* ── Auth state ── */
+onAuthStateChanged(auth, async user=>{
+  if(user){
+    me=user;
+
+    const snap=await getDoc(doc(db,'users',user.uid));
+
+    meData=snap.exists()
+      ? snap.data()
+      : {
+          displayName:user.displayName,
+          photoURL:user.photoURL||BLANK_AV,
+          teamId:null
+        };
+
+    document.getElementById('navbar').classList.remove('hidden');
+
+    /* FIXED LINE */
+    document.getElementById('nav-av').src =
+      meData.photoURL || BLANK_AV;
+
+    if(meData.teamId){
+      await loadTeam(meData.teamId);
+    }
+
+    renderLobby();
+    show('lobby-screen');
+
+  } else {
+
+    me=null;
+    meData=null;
+    team=null;
+
+    document.getElementById('navbar').classList.add('hidden');
+
+    show('auth-screen');
+  }
+});
+
+async function loadTeam(tid){
+  const snap=await getDoc(doc(db,'teams',tid));
+  if(snap.exists()) team={id:snap.id,...snap.data()};
+  else { team=null; await updateDoc(doc(db,'users',me.uid),{teamId:null}); meData.teamId=null; }
+}
+
+function renderLobby(){
+  const banner=document.getElementById('team-banner');
+  if(team){
+    banner.classList.remove('hidden');
+    document.getElementById('ban-av').src=av(team.photoURL);
+    document.getElementById('ban-name').textContent=team.name;
+    document.getElementById('ban-code').textContent='CODE: '+team.code;
+    document.getElementById('ban-count').textContent=(team.members?.length||0)+' / 5 members';
+  } else { banner.classList.add('hidden'); }
+}
+
+/* ── Team CRUD ── */
+window.createTeam = async()=>{
+  const name=document.getElementById('c-team-name').value.trim();
+  if(!name) return toast('Enter a team name','err');
+  if(meData.teamId) return toast('You are already in a team','err');
+  const code=genCode();
+  const ref2=await addDoc(collection(db,'teams'),{name,code,leaderId:me.uid,photoURL:BLANK_AV,members:[me.uid],memberCount:1,createdAt:serverTimestamp()});
+  await updateDoc(doc(db,'users',me.uid),{teamId:ref2.id});
+  meData.teamId=ref2.id;
+  await loadTeam(ref2.id);
+  toast('Team created! Code: '+code,'ok');
+  renderLobby();
+};
+window.joinTeam = async()=>{
+  const code=document.getElementById('j-code').value.trim().toUpperCase();
+  if(code.length!==6) return toast('Enter a valid 6-character code','err');
+  if(meData.teamId) return toast('You are already in a team','err');
+  const q=query(collection(db,'teams'),where('code','==',code));
+  const snap=await getDocs(q);
+  if(snap.empty) return toast('Team not found','err');
+  const tdoc=snap.docs[0];
+  const td=tdoc.data();
+  if(td.members.length>=5) return toast('Team is full (max 5 members)','err');
+  if(td.members.includes(me.uid)) return toast('Already in this team','err');
+  await updateDoc(doc(db,'teams',tdoc.id),{members:arrayUnion(me.uid),memberCount:td.members.length+1});
+  await updateDoc(doc(db,'users',me.uid),{teamId:tdoc.id});
+  meData.teamId=tdoc.id;
+  await loadTeam(tdoc.id);
+  toast('Joined '+td.name+'!','ok');
+  renderLobby();
+};
+window.enterTeam = ()=>{
+  if(!team) return;
+  show('team-screen');
+  renderTeamHeader();
+  startTeamListener();
+  startChatListener();
+  startQsListener();
+};
+window.leaveTeam = async()=>{
+  if(!confirm('Leave this team?')) return;
+  const members=team.members.filter(u=>u!==me.uid);
+  const isLeader=team.leaderId===me.uid;
+  if(members.length===0){
+    await deleteDoc(doc(db,'teams',team.id));
+  } else if(isLeader){
+    await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(me.uid),memberCount:members.length,leaderId:members[0]});
+  } else {
+    await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(me.uid),memberCount:members.length});
+  }
+  await updateDoc(doc(db,'users',me.uid),{teamId:null});
+  meData.teamId=null; team=null;
+  cleanup();
+  renderLobby();
+  show('lobby-screen');
+  toast('Left the team');
+};
+window.copyCode = ()=>{ navigator.clipboard.writeText(team.code).then(()=>toast('Code copied!','ok')); };
+
+function renderTeamHeader(){
+  if(!team) return;
+  document.getElementById('t-av').src=av(team.photoURL);
+  document.getElementById('t-name').textContent=team.name;
+  document.getElementById('t-code').textContent=team.code;
+  document.getElementById('t-count').textContent=(team.members?.length||0)+'/5 members';
+  const isLeader=team.leaderId===me.uid;
+  document.getElementById('t-role').textContent=isLeader?'⭐ Leader':'Member';
+  document.getElementById('t-av-overlay').style.display=isLeader?'flex':'none';
+}
+function startTeamListener(){
+  if(unsubTeam) unsubTeam();
+  unsubTeam=onSnapshot(doc(db,'teams',team.id),snap=>{
+    if(!snap.exists()){
+      toast('Team was disbanded','err'); cleanup(); meData.teamId=null; team=null;
+      renderLobby(); show('lobby-screen'); return;
+    }
+    team={id:snap.id,...snap.data()};
+    renderTeamHeader();
+    renderMembers();
+    checkQuizReady();
+  });
+}
+
+/* ── MEMBERS ── */
+window.switchTab=(btn,pane)=>{
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pane-'+pane).classList.add('active');
+  if(pane==='members') renderMembers();
+  if(pane==='quiz') checkQuizReady();
+};
+async function renderMembers(){
+  const grid=document.getElementById('members-grid');
+  grid.innerHTML='';
+  const isLeader=team.leaderId===me.uid;
+  for(const uid of (team.members||[])){
+    const snap=await getDoc(doc(db,'users',uid));
+    if(!snap.exists()) continue;
+    const u=snap.data();
+    const card=document.createElement('div');
+    card.className='member-card';
+    card.innerHTML=`<img src="${av(u.photoURL)}" alt="${u.displayName}">
+      <div class="member-name">${u.displayName||'Seeker'}</div>
+      <div class="member-role">${uid===team.leaderId?'⭐ Leader':'Member'}</div>
+      ${isLeader&&uid!==me.uid?`<button class="btn-kick" onclick="kickMember('${uid}')">Remove</button>`:''}`;
+    grid.appendChild(card);
+  }
+}
+window.kickMember=async uid=>{
+  if(team.leaderId!==me.uid) return;
+  await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(uid),memberCount:team.members.length-1});
+  await updateDoc(doc(db,'users',uid),{teamId:null});
+  toast('Member removed','ok');
+};
+
+/* ── CHAT ── */
+function startChatListener(){
+  if(unsubChat) unsubChat();
+  const q=query(collection(db,'teams',team.id,'messages'),orderBy('createdAt','asc'),limit(120));
+  unsubChat=onSnapshot(q,snap=>{
+    const box=document.getElementById('chat-box');
+    box.innerHTML='';
+    if(snap.empty){ box.innerHTML='<div class="empty-msg">No messages yet — be the first!</div>'; return; }
+    snap.docs.forEach(d=>{
+      const m=d.data();
+      const mine=m.senderId===me.uid;
+      const el=document.createElement('div');
+      el.className='chat-row'+(mine?' mine':'');
+      el.innerHTML=`<img src="${av(m.senderPhoto)}" class="chat-av" alt="${m.senderName}">
+        <div class="chat-bubble">
+          ${!mine?`<div class="chat-sender">${m.senderName}</div>`:''}
+          <div class="chat-txt">${escHtml(m.text)}</div>
+          <div class="chat-time">${fmtTime(m.createdAt)}</div>
+        </div>`;
+      box.appendChild(el);
+    });
+    box.scrollTop=box.scrollHeight;
+  });
+}
+function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+window.chatKey=e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendMsg(); } };
+window.sendMsg=async()=>{
+  const el=document.getElementById('chat-in');
+  const text=el.value.trim();
+  if(!text) return;
+  el.value='';
+  await addDoc(collection(db,'teams',team.id,'messages'),{
+    text, senderId:me.uid,
+    senderName:meData.displayName||me.displayName||'Seeker',
+    senderPhoto:meData.photoURL||BLANK_AV,
+    createdAt:serverTimestamp()
+  });
+};
+
+/* ── QUESTIONS ── */
+function startQsListener(){
+  if(unsubQs) unsubQs();
+  const q=query(collection(db,'questions'),where('teamId','==',team.id),orderBy('createdAt','desc'));
+  unsubQs=onSnapshot(q,snap=>{
+    allQuestions=[];
+    const list=document.getElementById('q-list');
+    list.innerHTML='';
+    if(snap.empty){ list.innerHTML='<div class="empty-msg">No questions yet — upload some!</div>'; return; }
+    snap.docs.forEach(d=>{
+      const qi={id:d.id,...d.data()};
+      allQuestions.push(qi);
+      const el=document.createElement('div'); el.className='q-item';
+      el.innerHTML=`<div class="q-item-body">
+          <div class="q-item-text">${escHtml(qi.question)}</div>
+          <div class="q-item-ans">✓ ${escHtml(qi.options[qi.answer])}</div>
+          <div class="q-item-cat">${qi.category||'General'}</div>
+        </div>
+        ${qi.uploadedBy===me.uid?`<button class="btn-del" title="Delete" onclick="deleteQ('${d.id}')">🗑</button>`:''}`;
+      list.appendChild(el);
+    });
+  });
+}
+window.uploadQuestion=async()=>{
+  const q=document.getElementById('uq-q').value.trim();
+  const a=document.getElementById('uq-a').value.trim();
+  const b=document.getElementById('uq-b').value.trim();
+  const c=document.getElementById('uq-c').value.trim();
+  const d=document.getElementById('uq-d').value.trim();
+  const ans=document.getElementById('uq-ans').value;
+  const cat=document.getElementById('uq-cat').value.trim();
+  if(!q||!a||!b||!c||!d||ans==='') return toast('Fill in all question fields','err');
+  await addDoc(collection(db,'questions'),{
+    question:q, options:[a,b,c,d], answer:parseInt(ans),
+    category:cat||'General', teamId:team.id,
+    uploadedBy:me.uid, createdAt:serverTimestamp()
+  });
+  ['uq-q','uq-a','uq-b','uq-c','uq-d','uq-cat'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('uq-ans').value='';
+  toast('Question uploaded!','ok');
+};
+window.deleteQ=async id=>{ await deleteDoc(doc(db,'questions',id)); toast('Deleted'); };
+
+/* ── QUIZ ── */
+function checkQuizReady(){
+  const mc=team.members?.length||0;
+  const qc=allQuestions.length;
+  const warnM=document.getElementById('quiz-warn');
+  const warnQ=document.getElementById('quiz-noq');
+  const btn=document.getElementById('btn-start');
+  warnM.classList.toggle('hidden',mc>=2);
+  warnQ.classList.toggle('hidden',qc>0);
+  btn.disabled=(mc<2||qc===0);
+}
+window.startQuiz=()=>{
+  if(allQuestions.length===0) return toast('No questions!','err');
+  quizSet=[...allQuestions].sort(()=>Math.random()-.5).slice(0,Math.min(10,allQuestions.length));
+  quizIdx=0; quizScore=0;
+  document.getElementById('quiz-lobby').classList.add('hidden');
+  document.getElementById('quiz-results').classList.add('hidden');
+  document.getElementById('quiz-active').classList.remove('hidden');
+  showQuestion();
+};
+function showQuestion(){
+  if(timerInterval) clearInterval(timerInterval);
+  const q=quizSet[quizIdx];
+  const total=quizSet.length;
+  quizAnswered=false;
+  document.getElementById('q-counter').textContent=`Question ${quizIdx+1} / ${total}`;
+  document.getElementById('q-score').textContent=`Score: ${quizScore}`;
+  document.getElementById('prog-fill').style.width=(quizIdx/total*100)+'%';
+  document.getElementById('q-text').textContent=q.question;
+  const optsEl=document.getElementById('q-opts');
+  optsEl.innerHTML='';
+  ['A','B','C','D'].forEach((L,i)=>{
+    const btn=document.createElement('button');
+    btn.className='q-opt'; btn.textContent=`${L}) ${q.options[i]}`;
+    btn.onclick=()=>answerQ(i);
+    optsEl.appendChild(btn);
+  });
+  // Timer
+  let timeLeft=15;
+  const circle=document.getElementById('timer-circle');
+  const numEl=document.getElementById('timer-num');
+  const circ=138.2;
+  circle.style.strokeDashoffset='0';
+  numEl.textContent=timeLeft;
+  timerInterval=setInterval(()=>{
+    timeLeft--;
+    numEl.textContent=timeLeft;
+    circle.style.strokeDashoffset=((15-timeLeft)/15*circ);
+    if(timeLeft<=0){ clearInterval(timerInterval); if(!quizAnswered) answerQ(-1); }
+  },1000);
+}
+function answerQ(idx){
+  if(quizAnswered) return;
+  quizAnswered=true;
+  if(timerInterval) clearInterval(timerInterval);
+  const q=quizSet[quizIdx];
+  const opts=document.querySelectorAll('.q-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(idx===q.answer){ opts[idx].classList.add('correct'); quizScore+=10; }
+  else {
+    if(idx>=0) opts[idx].classList.add('wrong');
+    opts[q.answer].classList.add('correct');
+  }
+  document.getElementById('q-score').textContent=`Score: ${quizScore}`;
+  setTimeout(()=>{
+    quizIdx++;
+    if(quizIdx<quizSet.length) showQuestion();
+    else showResults();
+  },1600);
+}
+async function showResults(){
+  document.getElementById('quiz-active').classList.add('hidden');
+  document.getElementById('quiz-results').classList.remove('hidden');
+  document.getElementById('res-score').textContent=quizScore;
+  const total=quizSet.length*10;
+  const pct=Math.round(quizScore/total*100);
+  let msg='';
+  if(pct===100) msg='Perfect score! Glory be to God! 🌟';
+  else if(pct>=80) msg='Excellent! You know your Scriptures well. ✝';
+  else if(pct>=60) msg='Good effort! Keep studying the Word. 📖';
+  else msg='Keep reading — the Word is deep and rewarding. 🕊';
+  document.getElementById('res-msg').textContent=msg;
+  try {
+    await addDoc(collection(db,'teams',team.id,'scores'),{
+      userId:me.uid, userName:meData.displayName||me.displayName,
+      score:quizScore, total, date:serverTimestamp()
+    });
+  } catch(e){ /* non-fatal */ }
+}
+window.resetQuiz=()=>{
+  document.getElementById('quiz-results').classList.add('hidden');
+  document.getElementById('quiz-active').classList.add('hidden');
+  document.getElementById('quiz-lobby').classList.remove('hidden');
+  checkQuizReady();
+};
+
+/* ── PROFILE ── */
+window.openProfileModal=()=>{
+  document.getElementById('prof-av').src=av(meData.photoURL);
+  document.getElementById('prof-name').value=meData.displayName||me.displayName||'';
+  document.getElementById('prof-modal').classList.remove('hide');
+};
+window.closeProfileModal=()=>document.getElementById('prof-modal').classList.add('hide');
+window.saveProfile=async()=>{
+  const name=document.getElementById('prof-name').value.trim();
+  if(!name) return toast('Enter a name','err');
+  await updateDoc(doc(db,'users',me.uid),{displayName:name});
+  await updateProfile(me,{displayName:name});
+  meData.displayName=name;
+  closeProfileModal();
+  toast('Profile updated!','ok');
+};
+window.uploadProfPhoto = async (e) => {
+  try{
+    const file = e.target.files[0];
+    if(!file) return;
+
+    toast('Uploading photo...');
+
+    /* unique filename prevents caching */
+    const fileName = `profile-photos/${me.uid}/${Date.now()}_${file.name}`;
+
+    const sRef = ref(storage, fileName);
+
+    await uploadBytes(sRef, file);
+
+    let url = await getDownloadURL(sRef);
+
+    /* force refresh */
+    url += `?t=${Date.now()}`;
+
+    /* save to firestore */
+    await updateDoc(doc(db,'users',me.uid),{
+      photoURL:url
+    });
+
+    /* save to firebase auth */
+    await updateProfile(me,{
+      photoURL:url
+    });
+
+    /* local state update */
+    meData.photoURL = url;
+
+    /* update EVERY visible image */
+    document.getElementById('prof-av').src = url;
+    document.getElementById('nav-av').src = url;
+
+    /* refresh member cards if open */
+    const memberImgs = document.querySelectorAll('.chat-av');
+    memberImgs.forEach(img=>{
+      if(img.alt === (meData.displayName || me.displayName)){
+        img.src = url;
+      }
+    });
+
+    toast('Profile photo updated!','ok');
+
+  } catch(err){
+    console.error(err);
+    toast('Failed to upload image','err');
+  }
+};
+
+/* ── TEAM PHOTO ── */
+window.changeTeamPhoto=()=>{ if(team?.leaderId===me.uid) document.getElementById('file-team').click(); };
+window.uploadTeamPhoto=async e=>{
+  const file=e.target.files[0]; if(!file) return;
+  const sRef=ref(storage,`team-photos/${team.id}`);
+  await uploadBytes(sRef,file);
+  const url=await getDownloadURL(sRef);
+  await updateDoc(doc(db,'teams',team.id),{photoURL:url});
+  team.photoURL=url;
+  document.getElementById('t-av').src=url;
+  document.getElementById('ban-av').src=url;
+  toast('Team photo updated!','ok');
+};
+
+/* ── Cleanup ── */
+function cleanup(){
+  if(unsubChat){ unsubChat(); unsubChat=null; }
+  if(unsubTeam){ unsubTeam(); unsubTeam=null; }
+  if(unsubQs){ unsubQs(); unsubQs=null; }
+  if(timerInterval){ clearInterval(timerInterval); timerInterval=null; }
+}
+</script>
+</body>
+</html>
