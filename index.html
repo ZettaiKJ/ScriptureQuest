@@ -16,13 +16,11 @@ body{font-family:'Lora',Georgia,serif;background:var(--navy);color:var(--text);m
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 60% 60% at 15% 40%,rgba(201,168,76,.06),transparent 70%),
              radial-gradient(ellipse 50% 50% at 85% 20%,rgba(139,26,44,.08),transparent 70%)}
-
-/* ── SCREENS ── */
 .screen{display:none;position:relative;z-index:1}
 .screen.active{display:block}
 #auth-screen.active{display:flex}
 
-/* ── AUTH ── */
+/* AUTH */
 #auth-screen{min-height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
 .auth-logo{text-align:center;margin-bottom:2.5rem}
 .auth-cross{font-size:3.5rem;color:var(--gold);display:block;animation:floatCross 3s ease-in-out infinite}
@@ -37,7 +35,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .auth-form{display:none}
 .auth-form.active{display:block}
 
-/* ── FORMS ── */
+/* FORMS */
 .form-group{margin-bottom:1.1rem}
 .form-group label{display:block;font-size:.72rem;letter-spacing:.12em;font-family:'Cinzel',serif;color:var(--text-mid);margin-bottom:.45rem}
 .form-group input,.form-group select{width:100%;padding:.7rem 1rem;background:var(--navy-light);border:1px solid rgba(201,168,76,.18);border-radius:9px;color:var(--text);font-family:'Lora',serif;font-size:.92rem;outline:none;transition:border-color .2s,box-shadow .2s}
@@ -52,7 +50,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-google{width:100%;padding:.85rem;background:var(--navy-light);border:1px solid rgba(201,168,76,.25);border-radius:9px;color:var(--text);font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.07em;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.75rem}
 .btn-google:hover{border-color:var(--gold);background:rgba(201,168,76,.06)}
 
-/* ── NAVBAR ── */
+/* NAVBAR */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,21,33,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.12);padding:0 1.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:.12em}
 .nav-right{display:flex;align-items:center;gap:.85rem}
@@ -60,18 +58,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .nav-avatar:hover{transform:scale(1.08);box-shadow:0 0 12px rgba(201,168,76,.4)}
 .btn-signout{background:none;border:1px solid rgba(201,168,76,.25);color:var(--text-mid);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;padding:.35rem .75rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .btn-signout:hover{border-color:var(--crimson);color:#e07080}
-/* Lobby page – natural height, no overflow */
 .page-content{padding-top:78px;padding-bottom:2rem;padding-left:1.5rem;padding-right:1.5rem;max-width:980px;margin:0 auto}
 .page-content.wide{max-width:1200px}
-
-/* Team screen – locked to viewport, zero overflow at page level */
 #team-screen{height:100vh;overflow:hidden}
-#team-screen .page-content{
-  height:100%;min-height:0;padding-bottom:0;overflow:hidden;
-  display:flex;flex-direction:column;
-}
+#team-screen .page-content{height:100%;min-height:0;padding-bottom:0;overflow:hidden;display:flex;flex-direction:column;}
 
-/* ── LOBBY ── */
+/* LOBBY */
 .lobby-header{text-align:center;padding:2rem 0 1.5rem}
 .lobby-header h2{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);letter-spacing:.05em}
 .lobby-header p{color:var(--text-mid);margin-top:.45rem;font-style:italic}
@@ -87,7 +79,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .lobby-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);border-radius:16px;padding:1.75rem}
 .lobby-card h3{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);letter-spacing:.08em;margin-bottom:1.25rem}
 
-/* ── TEAM HEADER ── */
+/* TEAM HEADER */
 .team-header{flex-shrink:0;display:flex;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid rgba(201,168,76,.12);margin-bottom:0;flex-wrap:wrap}
 .team-av-wrap{position:relative;cursor:pointer;flex-shrink:0}
 .team-av-wrap img{width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;display:block}
@@ -106,16 +98,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-secondary{padding:.5rem 1rem;background:none;border:1px solid rgba(201,168,76,.28);color:var(--text);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;border-radius:7px;cursor:pointer;transition:all .2s}
 .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
 
-/* ── TABS ── */
+/* TABS */
 .tabs-nav{flex-shrink:0;display:flex;border-bottom:1px solid rgba(201,168,76,.12);margin-top:0;overflow-x:auto;overflow-y:hidden}
 .tab-btn{background:none;border:none;color:var(--text-mid);font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.1em;padding:.65rem 1.1rem;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
 .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
-/* Tab panes fill all remaining height and scroll internally */
 .tab-pane{display:none;flex:1;min-height:0;overflow-y:auto;padding:1.25rem 0 1.5rem}
 .tab-pane.active{display:flex;flex-direction:column}
 
-/* ── CHAT ── */
-/* chat-wrap stretches to fill the tab pane via flex */
+/* CHAT */
 .chat-wrap{display:flex;flex-direction:column;flex:1;min-height:0}
 .chat-box{flex:1;min-height:0;overflow-y:auto;padding:1rem;background:var(--navy-mid);border:1px solid rgba(201,168,76,.1);border-radius:12px 12px 0 0;display:flex;flex-direction:column;gap:.9rem}
 .chat-box::-webkit-scrollbar{width:4px}
@@ -134,7 +124,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-send{background:var(--gold);border:none;border-radius:8px;padding:0 1rem;color:var(--navy);font-size:1.1rem;cursor:pointer;transition:all .2s}
 .btn-send:hover{background:var(--gold-lt)}
 
-/* ── MEMBERS ── */
+/* MEMBERS */
 .members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;align-content:start}
 .member-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:1.4rem;text-align:center}
 .member-card img{width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-bottom:.65rem}
@@ -143,10 +133,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-kick{margin-top:.65rem;background:rgba(139,26,44,.18);border:1px solid rgba(139,26,44,.35);color:#e07080;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.1em;padding:.28rem .75rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .btn-kick:hover{background:rgba(139,26,44,.38)}
 
-/* ══ CHALLENGE / BATTLE ══ */
+/* CHALLENGE / BATTLE */
 .ch-wrap{max-width:680px;margin:0 auto;width:100%}
-
-/* Lobby chooser */
 .battle-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1rem}
 @media(max-width:540px){.battle-grid{grid-template-columns:1fr}}
 .battle-lobby-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:1.75rem;text-align:center}
@@ -155,8 +143,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-battle{padding:.85rem 1.75rem;background:linear-gradient(135deg,var(--gold),var(--gold-dim));border:none;border-radius:9px;color:var(--navy);font-family:'Cinzel',serif;font-size:.88rem;font-weight:700;letter-spacing:.12em;cursor:pointer;transition:all .25s;box-shadow:0 4px 18px rgba(201,168,76,.25)}
 .btn-battle:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.4)}
 .btn-battle:disabled{opacity:.4;cursor:not-allowed}
+.section-divider{display:flex;align-items:center;gap:.75rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.2em;color:var(--gold);margin:1.5rem 0 1rem}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.2)}
 
-/* Waiting room */
+/* WAITING ROOM */
 .waiting-room{text-align:center;padding:1rem 0}
 .waiting-room h3{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.4rem}
 .wait-sub{color:var(--text-mid);font-style:italic;font-size:.85rem;margin-bottom:2rem}
@@ -174,7 +164,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .wait-info{color:var(--text-mid);font-size:.82rem;font-style:italic;margin-bottom:1.25rem}
 .start-btn-wrap{display:flex;flex-direction:column;align-items:center;gap:.75rem}
 
-/* Battle scoreboard */
+/* BATTLE SCOREBOARD */
 .battle-scoreboard{display:flex;align-items:center;justify-content:space-between;background:var(--navy-mid);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:.9rem 1.25rem;margin-bottom:1.25rem;gap:1rem}
 .b-team{display:flex;align-items:center;gap:.65rem;flex:1}
 .b-team.right{flex-direction:row-reverse;text-align:right}
@@ -183,7 +173,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .b-pts{font-family:'Cinzel',serif;font-size:1.35rem;color:var(--gold);font-weight:700;line-height:1}
 .b-vs-lbl{font-family:'Cinzel',serif;font-size:.9rem;color:var(--text-mid);flex-shrink:0}
 
-/* Question card */
+/* QUESTION CARD */
 .q-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,.15);border-radius:14px;padding:1.5rem}
 .q-meta-row{display:flex;justify-content:space-between;font-family:'Cinzel',serif;font-size:.75rem;color:var(--text-mid);letter-spacing:.08em;margin-bottom:.75rem}
 .prog-bar{height:4px;background:rgba(201,168,76,.14);border-radius:2px;margin-bottom:1.4rem;overflow:hidden}
@@ -201,7 +191,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .timer-svg{transform:rotate(-90deg);position:absolute;inset:0}
 .timer-num{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);z-index:1}
 
-/* Results */
+/* RESULTS */
 .results-wrap{text-align:center;padding:2rem 0;max-width:540px;margin:0 auto}
 .res-crown{font-size:3rem;display:block;margin-bottom:.4rem;animation:bounce .55s ease infinite alternate}
 @keyframes bounce{to{transform:translateY(-8px)}}
@@ -217,7 +207,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .final-vs{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--text-mid);flex-shrink:0}
 .res-contrib{color:var(--text-mid);font-size:.83rem;font-style:italic;margin-bottom:1.5rem}
 
-/* ── QUESTIONS ── */
+/* QUESTIONS */
 .q-upload-form{background:var(--navy-mid);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:1.75rem;margin-bottom:1.75rem}
 .q-upload-form h3{font-family:'Cinzel',serif;color:var(--gold);font-size:.92rem;letter-spacing:.1em;margin-bottom:1.25rem}
 .opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
@@ -231,7 +221,42 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-del{background:none;border:none;color:var(--text-mid);cursor:pointer;font-size:.95rem;transition:color .2s;flex-shrink:0;padding:.2rem}
 .btn-del:hover{color:#e07080}
 
-/* ── PROFILE MODAL ── */
+/* CSV UPLOAD */
+.csv-drop-zone{border:2px dashed rgba(201,168,76,.35);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(201,168,76,.03)}
+.csv-drop-zone:hover,.csv-drop-zone.drag-over{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.csv-drop-icon{font-size:2rem;margin-bottom:.4rem}
+.csv-drop-text{font-family:'Cinzel',serif;font-size:.82rem;color:var(--gold);letter-spacing:.08em}
+.csv-drop-hint{font-size:.72rem;color:var(--text-mid);margin-top:.25rem;font-style:italic}
+.csv-format{font-size:.72rem;color:var(--text-mid);font-style:italic;margin-bottom:1rem;line-height:1.6;background:rgba(201,168,76,.05);border-radius:8px;padding:.65rem .9rem;border-left:2px solid rgba(201,168,76,.3)}
+.csv-status-bar{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;flex-wrap:wrap;gap:.65rem}
+.csv-status-text{font-size:.8rem;color:var(--text-mid);font-style:italic}
+.btn-csv-confirm{padding:.6rem 1.4rem;background:linear-gradient(135deg,var(--gold),var(--gold-dim));border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;cursor:pointer;transition:all .2s}
+.btn-csv-confirm:hover:not(:disabled){background:linear-gradient(135deg,var(--gold-lt),var(--gold))}
+.btn-csv-confirm:disabled{opacity:.4;cursor:not-allowed}
+
+/* LEADERBOARD */
+.lb-toggle-row{display:flex;background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:.22rem;margin-bottom:1.25rem;gap:.22rem}
+.lb-toggle{flex:1;background:none;border:none;color:var(--text-mid);font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.1em;padding:.55rem;cursor:pointer;border-radius:7px;transition:all .2s}
+.lb-toggle.active{background:rgba(201,168,76,.18);color:var(--gold)}
+.lb-list{display:flex;flex-direction:column;gap:.45rem}
+.lb-row{display:flex;align-items:center;gap:.85rem;padding:.8rem 1rem;background:var(--navy-mid);border:1px solid rgba(201,168,76,.08);border-radius:11px;transition:border-color .2s}
+.lb-row:hover{border-color:rgba(201,168,76,.22)}
+.lb-row.lb-me{border-color:rgba(201,168,76,.38);background:rgba(201,168,76,.05)}
+.lb-rank{font-family:'Cinzel',serif;font-size:1rem;width:30px;text-align:center;flex-shrink:0;color:var(--text-mid)}
+.lb-rank.gold{color:#ffd700}
+.lb-rank.silver{color:#c0c0c0}
+.lb-rank.bronze{color:#cd7f32}
+.lb-av{width:42px;height:42px;border-radius:50%;border:2px solid rgba(201,168,76,.3);object-fit:cover;flex-shrink:0}
+.lb-info{flex:1;min-width:0}
+.lb-name{font-family:'Cinzel',serif;font-size:.82rem;color:var(--text);display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+.lb-you{font-size:.6rem;background:rgba(201,168,76,.2);color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.08em;padding:.1rem .4rem;border-radius:4px;border:1px solid rgba(201,168,76,.3)}
+.lb-sub{font-size:.7rem;color:var(--text-mid);margin-top:.1rem}
+.lb-score-wrap{text-align:right;flex-shrink:0}
+.lb-score{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--gold);font-weight:700}
+.lb-score-lbl{font-size:.6rem;color:var(--text-mid)}
+.lb-empty{text-align:center;color:var(--text-mid);font-style:italic;font-size:.88rem;padding:2.5rem 1rem}
+
+/* PROFILE MODAL */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(5px)}
 .modal-bg.hide{display:none}
 .modal-box{background:var(--navy-mid);border:1px solid rgba(201,168,76,.3);border-radius:18px;padding:2rem;width:100%;max-width:380px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.6)}
@@ -243,7 +268,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .btn-chg{background:none;border:1px solid rgba(201,168,76,.28);color:var(--gold);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em;padding:.35rem .9rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .btn-chg:hover{background:rgba(201,168,76,.1)}
 
-/* ── TOAST ── */
+/* TOAST */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120px);background:var(--navy-light);border:1px solid rgba(201,168,76,.28);border-radius:9px;padding:.65rem 1.4rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.06em;color:var(--text);z-index:500;transition:transform .3s;white-space:nowrap;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.err{border-color:rgba(192,57,74,.5);color:#e07080}
@@ -254,7 +279,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 </head>
 <body>
 
-<!-- ══════════ AUTH ══════════ -->
+<!-- AUTH -->
 <div id="auth-screen" class="screen active">
   <div class="auth-logo">
     <span class="auth-cross">✝</span>
@@ -267,7 +292,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <button class="auth-tab active" onclick="authTab(this,'login')">Sign In</button>
       <button class="auth-tab" onclick="authTab(this,'register')">Register</button>
     </div>
-    <!-- Login -->
     <div id="f-login" class="auth-form active">
       <div class="form-group"><label>Email</label><input type="email" id="l-email" placeholder="you@example.com"></div>
       <div class="form-group"><label>Password</label><input type="password" id="l-pass" placeholder="••••••••"></div>
@@ -278,7 +302,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
         Continue with Google
       </button>
     </div>
-    <!-- Register -->
     <div id="f-register" class="auth-form">
       <div class="form-group"><label>Display Name</label><input type="text" id="r-name" placeholder="Your name"></div>
       <div class="form-group"><label>Email</label><input type="email" id="r-email" placeholder="you@example.com"></div>
@@ -293,7 +316,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   </div>
 </div>
 
-<!-- ══════════ NAVBAR ══════════ -->
+<!-- NAVBAR -->
 <nav class="navbar hidden" id="navbar">
   <div class="nav-brand">✝ ScriptureQuest</div>
   <div class="nav-right">
@@ -302,7 +325,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   </div>
 </nav>
 
-<!-- ══════════ LOBBY ══════════ -->
+<!-- LOBBY -->
 <div id="lobby-screen" class="screen">
   <div class="page-content">
     <div id="team-banner" class="current-team-banner hidden">
@@ -335,11 +358,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   </div>
 </div>
 
-<!-- ══════════ TEAM SCREEN ══════════ -->
+<!-- TEAM SCREEN -->
 <div id="team-screen" class="screen">
   <div class="page-content wide">
 
-    <!-- Header -->
     <div class="team-header">
       <div class="team-av-wrap" onclick="changeTeamPhoto()">
         <img src="" id="t-av" alt="team">
@@ -359,15 +381,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       </div>
     </div>
 
-    <!-- Tabs -->
     <div class="tabs-nav">
       <button class="tab-btn active" onclick="switchTab(this,'chat')">💬 Chat</button>
       <button class="tab-btn" onclick="switchTab(this,'members')">👥 Members</button>
       <button class="tab-btn" onclick="switchTab(this,'challenge')">⚔ Challenge</button>
       <button class="tab-btn" onclick="switchTab(this,'questions')">📖 Questions</button>
+      <button class="tab-btn" onclick="switchTab(this,'leaderboard')">🏆 Leaderboard</button>
     </div>
 
-    <!-- ── CHAT TAB ── -->
+    <!-- CHAT TAB -->
     <div class="tab-pane active" id="pane-chat">
       <div class="chat-wrap">
         <div class="chat-box" id="chat-box"><div class="empty-msg">Loading messages…</div></div>
@@ -378,17 +400,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       </div>
     </div>
 
-    <!-- ── MEMBERS TAB ── -->
+    <!-- MEMBERS TAB -->
     <div class="tab-pane" id="pane-members">
       <div class="members-grid" id="members-grid"><div class="empty-msg">Loading…</div></div>
     </div>
 
-    <!-- ── CHALLENGE TAB ── -->
+    <!-- CHALLENGE TAB -->
     <div class="tab-pane" id="pane-challenge">
       <div class="ch-wrap">
 
         <!-- 1. Battle Lobby -->
         <div id="ch-lobby">
+          <!-- Team Battles -->
+          <div class="section-divider">⚔ TEAM BATTLE</div>
           <div class="battle-grid">
             <div class="battle-lobby-card">
               <h3>⚔ Create a Battle</h3>
@@ -405,12 +429,31 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
               <button class="btn-battle" onclick="joinBattle()">Join Battle</button>
             </div>
           </div>
+
+          <!-- 1v1 Duels -->
+          <div class="section-divider">🗡 1v1 SCRIPTURE DUEL</div>
+          <div class="battle-grid">
+            <div class="battle-lobby-card">
+              <h3>🗡 Create a Duel</h3>
+              <p>Challenge any player to a one-on-one Scripture showdown. No team size limits.</p>
+              <button class="btn-battle" onclick="createDuel()">Create Duel</button>
+            </div>
+            <div class="battle-lobby-card">
+              <h3>⚡ Join a Duel</h3>
+              <p>Enter the 6-character duel code from the player who challenged you.</p>
+              <div class="form-group" style="text-align:left;margin-bottom:1rem">
+                <label>Duel Code</label>
+                <input type="text" id="dcode-in" placeholder="e.g. MX7KZ2" maxlength="6" style="text-transform:uppercase;letter-spacing:.2em">
+              </div>
+              <button class="btn-battle" onclick="joinDuel()">Join Duel</button>
+            </div>
+          </div>
         </div>
 
         <!-- 2. Waiting Room -->
         <div id="ch-waiting" class="hidden">
           <div class="waiting-room">
-            <h3>⚔ BATTLE ROOM</h3>
+            <h3 id="wait-title">⚔ BATTLE ROOM</h3>
             <p class="wait-sub" id="wait-sub">Waiting for an opponent to join…</p>
             <div class="vs-row">
               <div class="team-side" id="ws-a">
@@ -427,11 +470,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
             </div>
             <div id="bcode-wrap">
               <div class="battle-code-box" id="bcode-display" onclick="copyBattleCode()">------</div>
-              <div class="code-note">Click to copy · Share with the opposing team</div>
+              <div class="code-note">Click to copy · Share with your opponent</div>
             </div>
             <div class="wait-info" id="wait-info"></div>
             <div class="start-btn-wrap">
-              <button class="btn-battle" id="btn-start-battle" onclick="startBattle()" disabled>Start Battle</button>
+              <button class="btn-battle" id="btn-start-battle" onclick="startBattleOrDuel()" disabled>Start Battle</button>
               <button class="btn-secondary" onclick="cancelBattle()">Cancel</button>
             </div>
           </div>
@@ -439,12 +482,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
         <!-- 3. Battle Active -->
         <div id="ch-playing" class="hidden">
-          <!-- Live scoreboard -->
           <div class="battle-scoreboard">
             <div class="b-team">
               <img class="b-av" id="bs-a-av" src="" alt="">
               <div>
-                <div class="b-name" id="bs-a-name">Team A</div>
+                <div class="b-name" id="bs-a-name">A</div>
                 <div class="b-pts" id="bs-a-pts">0</div>
               </div>
             </div>
@@ -452,12 +494,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
             <div class="b-team right">
               <img class="b-av" id="bs-b-av" src="" alt="">
               <div>
-                <div class="b-name" id="bs-b-name">Team B</div>
+                <div class="b-name" id="bs-b-name">B</div>
                 <div class="b-pts" id="bs-b-pts">0</div>
               </div>
             </div>
           </div>
-          <!-- Question card -->
           <div class="q-card">
             <div class="q-meta-row">
               <span id="bq-counter">Question 1 / 10</span>
@@ -505,12 +546,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
           </div>
         </div>
 
-      </div><!-- .ch-wrap -->
-    </div><!-- pane-challenge -->
+      </div>
+    </div>
 
-    <!-- ── QUESTIONS TAB ── -->
+    <!-- QUESTIONS TAB -->
     <div class="tab-pane" id="pane-questions">
       <div style="max-width:700px;margin:0 auto">
+
+        <!-- Manual upload -->
         <div class="q-upload-form">
           <h3>📖 UPLOAD A QUESTION</h3>
           <div class="form-group"><label>Question</label><input type="text" id="uq-q" placeholder="e.g. Who built the ark?"></div>
@@ -534,14 +577,47 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
           <div class="form-group"><label>Category (optional)</label><input type="text" id="uq-cat" placeholder="e.g. Old Testament, Gospels, Epistles"></div>
           <button class="btn-primary" onclick="uploadQuestion()">Upload Question</button>
         </div>
+
+        <!-- CSV bulk upload -->
+        <div class="q-upload-form">
+          <h3>📎 BULK UPLOAD VIA CSV</h3>
+          <div class="csv-format">
+            <strong style="color:var(--gold)">Format:</strong> Question, Option A, Option B, Option C, Option D, Correct (0–3 or A–D), Category<br>
+            <em>Example:</em> Who built the ark?,Moses,Noah,Abraham,Elijah,1,Old Testament
+          </div>
+          <div class="csv-drop-zone" id="csv-drop" onclick="document.getElementById('file-csv').click()">
+            <div class="csv-drop-icon">📄</div>
+            <div class="csv-drop-text">Click to choose a .csv file</div>
+            <div class="csv-drop-hint">or drag &amp; drop here</div>
+          </div>
+          <div id="csv-preview" class="hidden">
+            <div class="csv-status-bar">
+              <span class="csv-status-text" id="csv-status-text"></span>
+              <button class="btn-csv-confirm hidden" id="csv-confirm-btn" onclick="confirmCSVUpload()">Upload All Questions</button>
+            </div>
+          </div>
+        </div>
+
         <div id="q-list" class="q-list"><div class="empty-msg">No questions yet — upload some above!</div></div>
       </div>
     </div>
 
-  </div><!-- .page-content -->
-</div><!-- #team-screen -->
+    <!-- LEADERBOARD TAB -->
+    <div class="tab-pane" id="pane-leaderboard">
+      <div style="max-width:680px;margin:0 auto;width:100%">
+        <div class="lb-toggle-row">
+          <button class="lb-toggle active" id="lb-tab-teams" onclick="lbSwitch(this,'teams')">🛡 Teams</button>
+          <button class="lb-toggle" id="lb-tab-players" onclick="lbSwitch(this,'players')">👤 Players</button>
+        </div>
+        <div id="lb-teams"><div class="lb-empty">Loading…</div></div>
+        <div id="lb-players" class="hidden"><div class="lb-empty">Loading…</div></div>
+      </div>
+    </div>
 
-<!-- ══════════ PROFILE MODAL ══════════ -->
+  </div>
+</div>
+
+<!-- PROFILE MODAL -->
 <div class="modal-bg hide" id="prof-modal">
   <div class="modal-box">
     <button class="btn-x" onclick="closeProfileModal()">×</button>
@@ -558,11 +634,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 <!-- Hidden file inputs -->
 <input type="file" id="file-prof" accept="image/*" class="hidden" onchange="uploadProfPhoto(event)">
 <input type="file" id="file-team" accept="image/*" class="hidden" onchange="uploadTeamPhoto(event)">
+<input type="file" id="file-csv" accept=".csv" class="hidden" onchange="handleCSVUpload(event)">
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- ══════════ FIREBASE JS ══════════ -->
 <script type="module">
 import { initializeApp }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -575,707 +650,797 @@ import { getFirestore, doc, setDoc, getDoc, collection, addDoc,
          updateDoc, arrayUnion, arrayRemove, deleteDoc, getDocs, limit, increment }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* ── Firebase init ── */
 const app = initializeApp({
-  apiKey:            "AIzaSyDQJJraJqe9AUVQo_3NidIHxULrdvkQZTk",
-  authDomain:        "scripturequest-2dea9.firebaseapp.com",
-  projectId:         "scripturequest-2dea9",
-  storageBucket:     "scripturequest-2dea9.firebasestorage.app",
-  messagingSenderId: "31816266150",
-  appId:             "1:31816266150:web:ab183957f0efbbf8e85f67"
+  apiKey:"AIzaSyDQJJraJqe9AUVQo_3NidIHxULrdvkQZTk",
+  authDomain:"scripturequest-2dea9.firebaseapp.com",
+  projectId:"scripturequest-2dea9",
+  storageBucket:"scripturequest-2dea9.firebasestorage.app",
+  messagingSenderId:"31816266150",
+  appId:"1:31816266150:web:ab183957f0efbbf8e85f67"
 });
 const auth = getAuth(app);
 const db   = getFirestore(app);
 
-/* ── Built-in fallback Bible questions ── */
 const BIBLE_QS = [
-  {question:"Who built the ark?",                              options:["Moses","Noah","Abraham","Elijah"],                                   answer:1},
-  {question:"How many disciples did Jesus have?",              options:["Ten","Eleven","Twelve","Thirteen"],                                  answer:2},
-  {question:"What is the first book of the Bible?",            options:["Exodus","Genesis","Leviticus","Numbers"],                            answer:1},
-  {question:"Who was swallowed by a great fish?",              options:["Elijah","Daniel","Jonah","Ezekiel"],                                 answer:2},
-  {question:"In what city was Jesus born?",                    options:["Nazareth","Jerusalem","Bethlehem","Hebron"],                         answer:2},
-  {question:"Who denied Jesus three times?",                   options:["John","James","Andrew","Peter"],                                     answer:3},
-  {question:"How many days was Lazarus in the tomb?",          options:["Two","Three","Four","Five"],                                         answer:2},
-  {question:"Who was the first king of Israel?",               options:["David","Solomon","Saul","Gideon"],                                   answer:2},
-  {question:"What did God create on the first day?",           options:["Animals","Light","Plants","The sky"],                                answer:1},
-  {question:"Who wrote most of the Psalms?",                   options:["Solomon","Moses","David","Asaph"],                                   answer:2},
-  {question:"Who betrayed Jesus for 30 pieces of silver?",     options:["Peter","Thomas","Judas","Matthew"],                                  answer:2},
-  {question:"What was Paul's original name?",                  options:["Simon","Saul","Samuel","Seth"],                                      answer:1},
-  {question:"How many books are in the New Testament?",        options:["24","25","26","27"],                                                 answer:3},
-  {question:"Who interpreted Pharaoh's dreams in Egypt?",      options:["Moses","Abraham","Joseph","Jacob"],                                  answer:2},
-  {question:"What was the name of Abraham's wife?",            options:["Rachel","Rebekah","Sarah","Leah"],                                   answer:2},
-  {question:"Where did Moses receive the Ten Commandments?",   options:["Mount Zion","Mount Sinai","Mount Carmel","Mount Ararat"],            answer:1},
-  {question:"Who was cast into the lions' den?",               options:["Shadrach","Daniel","Nehemiah","Ezra"],                               answer:1},
-  {question:"How many days did Jesus fast in the desert?",     options:["20","30","40","50"],                                                 answer:2},
-  {question:"Who wrote the book of Revelation?",               options:["Paul","Peter","John","Matthew"],                                     answer:2},
-  {question:"What miracle did Jesus perform at Cana?",         options:["Raised the dead","Healed the blind","Turned water to wine","Walked on water"], answer:2},
+  {question:"Who built the ark?",options:["Moses","Noah","Abraham","Elijah"],answer:1},
+  {question:"How many disciples did Jesus have?",options:["Ten","Eleven","Twelve","Thirteen"],answer:2},
+  {question:"What is the first book of the Bible?",options:["Exodus","Genesis","Leviticus","Numbers"],answer:1},
+  {question:"Who was swallowed by a great fish?",options:["Elijah","Daniel","Jonah","Ezekiel"],answer:2},
+  {question:"In what city was Jesus born?",options:["Nazareth","Jerusalem","Bethlehem","Hebron"],answer:2},
+  {question:"Who denied Jesus three times?",options:["John","James","Andrew","Peter"],answer:3},
+  {question:"How many days was Lazarus in the tomb?",options:["Two","Three","Four","Five"],answer:2},
+  {question:"Who was the first king of Israel?",options:["David","Solomon","Saul","Gideon"],answer:2},
+  {question:"What did God create on the first day?",options:["Animals","Light","Plants","The sky"],answer:1},
+  {question:"Who wrote most of the Psalms?",options:["Solomon","Moses","David","Asaph"],answer:2},
+  {question:"Who betrayed Jesus for 30 pieces of silver?",options:["Peter","Thomas","Judas","Matthew"],answer:2},
+  {question:"What was Paul's original name?",options:["Simon","Saul","Samuel","Seth"],answer:1},
+  {question:"How many books are in the New Testament?",options:["24","25","26","27"],answer:3},
+  {question:"Who interpreted Pharaoh's dreams in Egypt?",options:["Moses","Abraham","Joseph","Jacob"],answer:2},
+  {question:"What was the name of Abraham's wife?",options:["Rachel","Rebekah","Sarah","Leah"],answer:2},
+  {question:"Where did Moses receive the Ten Commandments?",options:["Mount Zion","Mount Sinai","Mount Carmel","Mount Ararat"],answer:1},
+  {question:"Who was cast into the lions' den?",options:["Shadrach","Daniel","Nehemiah","Ezra"],answer:1},
+  {question:"How many days did Jesus fast in the desert?",options:["20","30","40","50"],answer:2},
+  {question:"Who wrote the book of Revelation?",options:["Paul","Peter","John","Matthew"],answer:2},
+  {question:"What miracle did Jesus perform at Cana?",options:["Raised the dead","Healed the blind","Turned water to wine","Walked on water"],answer:2},
 ];
 
-/* ── App state ── */
+/* App state */
 let me = null, meData = null, team = null;
-let unsubChat = null, unsubTeam = null, unsubQs = null, unsubBattle = null;
+let unsubChat=null,unsubTeam=null,unsubQs=null,unsubBattle=null,unsubDuel=null;
 let allQuestions = [];
-let currentBattle = null, battlePlaying = false;
-let bQIdx = 0, bMyScore = 0, bAnswered = false, bTimer = null;
+let currentBattle=null, currentDuel=null;
+let currentMode='battle'; // 'battle' | 'duel'
+let battlePlaying=false;
+let bQIdx=0,bMyScore=0,bAnswered=false,bTimer=null;
+let csvParsed=[];
 
-const BLANK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23192840'/%3E%3Ctext x='40' y='55' font-size='32' text-anchor='middle' fill='%23c9a84c'%3E%E2%9C%9D%3C/text%3E%3C/svg%3E";
+const BLANK="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23192840'/%3E%3Ctext x='40' y='55' font-size='32' text-anchor='middle' fill='%23c9a84c'%3E%E2%9C%9D%3C/text%3E%3C/svg%3E";
 
-/* ── Helpers ── */
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-function toast(msg, type = '') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'toast ' + type;
-  void t.offsetWidth; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3200);
-}
-function genCode() {
-  const c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  return Array.from({length:6}, () => c[Math.floor(Math.random() * c.length)]).join('');
-}
-function fmtTime(ts) {
-  if (!ts) return '';
-  const d = ts.toDate ? ts.toDate() : new Date(ts);
-  return d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-}
-function av(url) { return url && url.length > 10 ? url : BLANK; }
-function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-/* Convert uploaded image → compressed base64 via canvas.
-   This stores the photo directly in Firestore — no Firebase Storage rules needed. */
-function imgToBase64(file, maxPx = 160) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error('Could not read file'));
-    reader.onload = e => {
-      const img = new Image();
-      img.onerror = () => reject(new Error('Invalid image'));
-      img.onload = () => {
-        const scale = Math.min(maxPx / img.width, maxPx / img.height, 1);
-        const canvas = document.createElement('canvas');
-        canvas.width  = Math.round(img.width  * scale);
-        canvas.height = Math.round(img.height * scale);
-        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL('image/jpeg', 0.82));
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
+/* Helpers */
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function toast(msg,type=''){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+type;void t.offsetWidth;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+function genCode(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return Array.from({length:6},()=>c[Math.floor(Math.random()*c.length)]).join('');}
+function fmtTime(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+function av(url){return url&&url.length>10?url:BLANK;}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function imgToBase64(file,maxPx=160){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onerror=()=>reject(new Error('Could not read file'));
+    reader.onload=e=>{
+      const img=new Image();
+      img.onerror=()=>reject(new Error('Invalid image'));
+      img.onload=()=>{
+        const scale=Math.min(maxPx/img.width,maxPx/img.height,1);
+        const canvas=document.createElement('canvas');
+        canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        resolve(canvas.toDataURL('image/jpeg',0.82));
+      };img.src=e.target.result;
+    };reader.readAsDataURL(file);
   });
 }
 
-/* ════════════════════════ AUTH ════════════════════════ */
-window.authTab = (btn, tab) => {
-  document.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('f-' + tab).classList.add('active');
+/* ═══════════════ AUTH ═══════════════ */
+window.authTab=(btn,tab)=>{
+  document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active'));
+  btn.classList.add('active');document.getElementById('f-'+tab).classList.add('active');
 };
-window.doLogin = async () => {
-  const e = document.getElementById('l-email').value;
-  const p = document.getElementById('l-pass').value;
-  if (!e || !p) return toast('Please fill all fields', 'err');
-  try { await signInWithEmailAndPassword(auth, e, p); }
-  catch (err) { toast(err.message, 'err'); }
+window.doLogin=async()=>{
+  const e=document.getElementById('l-email').value,p=document.getElementById('l-pass').value;
+  if(!e||!p)return toast('Please fill all fields','err');
+  try{await signInWithEmailAndPassword(auth,e,p);}catch(err){toast(err.message,'err');}
 };
-window.doRegister = async () => {
-  const name = document.getElementById('r-name').value.trim();
-  const e    = document.getElementById('r-email').value;
-  const p    = document.getElementById('r-pass').value;
-  if (!name || !e || !p) return toast('Please fill all fields', 'err');
-  if (p.length < 6) return toast('Password must be at least 6 characters', 'err');
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, e, p);
-    await updateProfile(cred.user, {displayName: name});
-    await setDoc(doc(db, 'users', cred.user.uid), {
-      displayName: name, email: e, photoURL: BLANK,
-      teamId: null, createdAt: serverTimestamp()
-    });
-  } catch (err) { toast(err.message, 'err'); }
+window.doRegister=async()=>{
+  const name=document.getElementById('r-name').value.trim();
+  const e=document.getElementById('r-email').value,p=document.getElementById('r-pass').value;
+  if(!name||!e||!p)return toast('Please fill all fields','err');
+  if(p.length<6)return toast('Password must be at least 6 characters','err');
+  try{
+    const cred=await createUserWithEmailAndPassword(auth,e,p);
+    await updateProfile(cred.user,{displayName:name});
+    await setDoc(doc(db,'users',cred.user.uid),{displayName:name,email:e,photoURL:BLANK,teamId:null,totalScore:0,createdAt:serverTimestamp()});
+  }catch(err){toast(err.message,'err');}
 };
-window.doGoogle = async () => {
-  try {
-    const cred = await signInWithPopup(auth, new GoogleAuthProvider());
-    const snap = await getDoc(doc(db, 'users', cred.user.uid));
-    if (!snap.exists()) {
-      await setDoc(doc(db, 'users', cred.user.uid), {
-        displayName: cred.user.displayName || 'Seeker',
-        email: cred.user.email,
-        photoURL: cred.user.photoURL || BLANK,
-        teamId: null, createdAt: serverTimestamp()
+window.doGoogle=async()=>{
+  try{
+    const cred=await signInWithPopup(auth,new GoogleAuthProvider());
+    const snap=await getDoc(doc(db,'users',cred.user.uid));
+    if(!snap.exists()){
+      await setDoc(doc(db,'users',cred.user.uid),{
+        displayName:cred.user.displayName||'Seeker',email:cred.user.email,
+        photoURL:cred.user.photoURL||BLANK,teamId:null,totalScore:0,createdAt:serverTimestamp()
       });
     }
-  } catch (err) { toast(err.message, 'err'); }
+  }catch(err){toast(err.message,'err');}
 };
-window.doSignOut = async () => { cleanup(); await fbOut(auth); };
+window.doSignOut=async()=>{cleanup();await fbOut(auth);};
 
-/* ── Auth state listener ── */
-onAuthStateChanged(auth, async user => {
-  if (user) {
-    me = user;
-    const snap = await getDoc(doc(db, 'users', user.uid));
-    meData = snap.exists() ? snap.data()
-      : { displayName: user.displayName, photoURL: user.photoURL || BLANK, teamId: null };
+onAuthStateChanged(auth,async user=>{
+  if(user){
+    me=user;
+    const snap=await getDoc(doc(db,'users',user.uid));
+    meData=snap.exists()?snap.data():{displayName:user.displayName,photoURL:user.photoURL||BLANK,teamId:null,totalScore:0};
     document.getElementById('navbar').classList.remove('hidden');
-    document.getElementById('nav-av').src = av(meData.photoURL);
-    if (meData.teamId) await loadTeam(meData.teamId);
-    renderLobby();
-    showScreen('lobby-screen');
-  } else {
-    me = null; meData = null; team = null;
+    document.getElementById('nav-av').src=av(meData.photoURL);
+    if(meData.teamId)await loadTeam(meData.teamId);
+    renderLobby();showScreen('lobby-screen');
+  }else{
+    me=null;meData=null;team=null;
     document.getElementById('navbar').classList.add('hidden');
     showScreen('auth-screen');
   }
 });
 
-/* ════════════════════════ TEAM ════════════════════════ */
-async function loadTeam(tid) {
-  const snap = await getDoc(doc(db, 'teams', tid));
-  if (snap.exists()) { team = {id: snap.id, ...snap.data()}; }
-  else { team = null; await updateDoc(doc(db,'users',me.uid), {teamId:null}); meData.teamId = null; }
+/* ═══════════════ TEAM ═══════════════ */
+async function loadTeam(tid){
+  const snap=await getDoc(doc(db,'teams',tid));
+  if(snap.exists()){team={id:snap.id,...snap.data()};}
+  else{team=null;await updateDoc(doc(db,'users',me.uid),{teamId:null});meData.teamId=null;}
 }
-
-function renderLobby() {
-  const banner = document.getElementById('team-banner');
-  if (team) {
+function renderLobby(){
+  const banner=document.getElementById('team-banner');
+  if(team){
     banner.classList.remove('hidden');
-    document.getElementById('ban-av').src    = av(team.photoURL);
-    document.getElementById('ban-name').textContent  = team.name;
-    document.getElementById('ban-code').textContent  = 'CODE: ' + team.code;
-    document.getElementById('ban-count').textContent = (team.members?.length || 0) + ' / 5 members';
-  } else { banner.classList.add('hidden'); }
+    document.getElementById('ban-av').src=av(team.photoURL);
+    document.getElementById('ban-name').textContent=team.name;
+    document.getElementById('ban-code').textContent='CODE: '+team.code;
+    document.getElementById('ban-count').textContent=(team.members?.length||0)+' / 5 members';
+  }else{banner.classList.add('hidden');}
 }
-
-window.createTeam = async () => {
-  const name = document.getElementById('c-team-name').value.trim();
-  if (!name) return toast('Enter a team name', 'err');
-  if (meData.teamId) return toast('You are already in a team', 'err');
-  const code = genCode();
-  const ref2 = await addDoc(collection(db, 'teams'), {
-    name, code, leaderId: me.uid, photoURL: BLANK,
-    members: [me.uid], memberCount: 1, createdAt: serverTimestamp()
-  });
-  await updateDoc(doc(db,'users',me.uid), {teamId: ref2.id});
-  meData.teamId = ref2.id;
+window.createTeam=async()=>{
+  const name=document.getElementById('c-team-name').value.trim();
+  if(!name)return toast('Enter a team name','err');
+  if(meData.teamId)return toast('You are already in a team','err');
+  const code=genCode();
+  const ref2=await addDoc(collection(db,'teams'),{name,code,leaderId:me.uid,photoURL:BLANK,members:[me.uid],memberCount:1,totalScore:0,createdAt:serverTimestamp()});
+  await updateDoc(doc(db,'users',me.uid),{teamId:ref2.id});
+  meData.teamId=ref2.id;
   await loadTeam(ref2.id);
-  toast('Team created! Code: ' + code, 'ok');
-  renderLobby();
+  toast('Team created! Code: '+code,'ok');renderLobby();
 };
-
-window.joinTeam = async () => {
-  const code = document.getElementById('j-code').value.trim().toUpperCase();
-  if (code.length !== 6) return toast('Enter a valid 6-character code', 'err');
-  if (meData.teamId) return toast('You are already in a team', 'err');
-  const snap = await getDocs(query(collection(db,'teams'), where('code','==',code)));
-  if (snap.empty) return toast('Team not found', 'err');
-  const tdoc = snap.docs[0]; const td = tdoc.data();
-  if (td.members.length >= 5) return toast('Team is full (max 5 members)', 'err');
-  if (td.members.includes(me.uid)) return toast('You are already in this team', 'err');
-  await updateDoc(doc(db,'teams',tdoc.id), {members: arrayUnion(me.uid), memberCount: td.members.length + 1});
-  await updateDoc(doc(db,'users',me.uid), {teamId: tdoc.id});
-  meData.teamId = tdoc.id;
-  await loadTeam(tdoc.id);
-  toast('Joined ' + td.name + '!', 'ok');
-  renderLobby();
+window.joinTeam=async()=>{
+  const code=document.getElementById('j-code').value.trim().toUpperCase();
+  if(code.length!==6)return toast('Enter a valid 6-character code','err');
+  if(meData.teamId)return toast('You are already in a team','err');
+  const snap=await getDocs(query(collection(db,'teams'),where('code','==',code)));
+  if(snap.empty)return toast('Team not found','err');
+  const tdoc=snap.docs[0];const td=tdoc.data();
+  if(td.members.length>=5)return toast('Team is full (max 5 members)','err');
+  if(td.members.includes(me.uid))return toast('You are already in this team','err');
+  await updateDoc(doc(db,'teams',tdoc.id),{members:arrayUnion(me.uid),memberCount:td.members.length+1});
+  await updateDoc(doc(db,'users',me.uid),{teamId:tdoc.id});
+  meData.teamId=tdoc.id;await loadTeam(tdoc.id);
+  toast('Joined '+td.name+'!','ok');renderLobby();
 };
-
-window.enterTeam = () => {
-  if (!team) return;
-  showScreen('team-screen');
-  renderTeamHeader();
-  startTeamListener();
-  startChatListener();
-  startQsListener();
-  showChState('lobby');
+window.enterTeam=()=>{
+  if(!team)return;
+  showScreen('team-screen');renderTeamHeader();
+  startTeamListener();startChatListener();startQsListener();showChState('lobby');
 };
-
-window.leaveTeam = async () => {
-  if (!confirm('Are you sure you want to leave this team?')) return;
-  const members = (team.members || []).filter(u => u !== me.uid);
-  const isLeader = team.leaderId === me.uid;
-  if (members.length === 0) {
-    await deleteDoc(doc(db,'teams',team.id));
-  } else if (isLeader) {
-    await updateDoc(doc(db,'teams',team.id), {members: arrayRemove(me.uid), memberCount: members.length, leaderId: members[0]});
-  } else {
-    await updateDoc(doc(db,'teams',team.id), {members: arrayRemove(me.uid), memberCount: members.length});
-  }
-  await updateDoc(doc(db,'users',me.uid), {teamId: null});
-  meData.teamId = null; team = null;
-  cleanup(); renderLobby(); showScreen('lobby-screen');
-  toast('Left the team');
+window.leaveTeam=async()=>{
+  if(!confirm('Are you sure you want to leave this team?'))return;
+  const members=(team.members||[]).filter(u=>u!==me.uid);
+  const isLeader=team.leaderId===me.uid;
+  if(members.length===0){await deleteDoc(doc(db,'teams',team.id));}
+  else if(isLeader){await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(me.uid),memberCount:members.length,leaderId:members[0]});}
+  else{await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(me.uid),memberCount:members.length});}
+  await updateDoc(doc(db,'users',me.uid),{teamId:null});
+  meData.teamId=null;team=null;cleanup();renderLobby();showScreen('lobby-screen');toast('Left the team');
 };
+window.copyCode=()=>{navigator.clipboard.writeText(team.code).then(()=>toast('Team code copied!','ok'));};
 
-window.copyCode = () => {
-  navigator.clipboard.writeText(team.code).then(() => toast('Team code copied!', 'ok'));
-};
-
-function renderTeamHeader() {
-  if (!team) return;
-  document.getElementById('t-av').src   = av(team.photoURL);
-  document.getElementById('t-name').textContent  = team.name;
-  document.getElementById('t-code').textContent  = team.code;
-  document.getElementById('t-count').textContent = (team.members?.length || 0) + '/5 members';
-  const isLeader = team.leaderId === me.uid;
-  document.getElementById('t-role').textContent  = isLeader ? '⭐ Leader' : 'Member';
-  document.getElementById('t-av-ol').style.display = isLeader ? 'flex' : 'none';
+function renderTeamHeader(){
+  if(!team)return;
+  document.getElementById('t-av').src=av(team.photoURL);
+  document.getElementById('t-name').textContent=team.name;
+  document.getElementById('t-code').textContent=team.code;
+  document.getElementById('t-count').textContent=(team.members?.length||0)+'/5 members';
+  const isLeader=team.leaderId===me.uid;
+  document.getElementById('t-role').textContent=isLeader?'⭐ Leader':'Member';
+  document.getElementById('t-av-ol').style.display=isLeader?'flex':'none';
 }
-
-function startTeamListener() {
-  if (unsubTeam) unsubTeam();
-  unsubTeam = onSnapshot(doc(db, 'teams', team.id), snap => {
-    if (!snap.exists()) {
-      toast('Your team was disbanded', 'err');
-      cleanup(); meData.teamId = null; team = null;
-      renderLobby(); showScreen('lobby-screen'); return;
-    }
-    team = {id: snap.id, ...snap.data()};
-    renderTeamHeader();
-    if (document.getElementById('pane-members').classList.contains('active')) renderMembers();
+function startTeamListener(){
+  if(unsubTeam)unsubTeam();
+  unsubTeam=onSnapshot(doc(db,'teams',team.id),snap=>{
+    if(!snap.exists()){toast('Your team was disbanded','err');cleanup();meData.teamId=null;team=null;renderLobby();showScreen('lobby-screen');return;}
+    team={id:snap.id,...snap.data()};renderTeamHeader();
+    if(document.getElementById('pane-members').classList.contains('active'))renderMembers();
   });
 }
 
-/* ── Members ── */
-window.switchTab = (btn, pane) => {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('pane-' + pane).classList.add('active');
-  if (pane === 'members') renderMembers();
+/* Members */
+window.switchTab=(btn,pane)=>{
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById('pane-'+pane).classList.add('active');
+  if(pane==='members')renderMembers();
+  if(pane==='leaderboard')loadLeaderboard();
 };
-
-async function renderMembers() {
-  const grid = document.getElementById('members-grid');
-  grid.innerHTML = '';
-  const isLeader = team.leaderId === me.uid;
-  for (const uid of (team.members || [])) {
-    const snap = await getDoc(doc(db, 'users', uid));
-    if (!snap.exists()) continue;
-    const u = snap.data();
-    const card = document.createElement('div'); card.className = 'member-card';
-    card.innerHTML = `
-      <img src="${av(u.photoURL)}" alt="${esc(u.displayName||'')}">
-      <div class="member-name">${esc(u.displayName || 'Seeker')}</div>
-      <div class="member-role">${uid === team.leaderId ? '⭐ Leader' : 'Member'}</div>
-      ${isLeader && uid !== me.uid
-        ? `<button class="btn-kick" onclick="kickMember('${uid}')">Remove</button>` : ''}`;
+async function renderMembers(){
+  const grid=document.getElementById('members-grid');grid.innerHTML='';
+  const isLeader=team.leaderId===me.uid;
+  for(const uid of(team.members||[])){
+    const snap=await getDoc(doc(db,'users',uid));if(!snap.exists())continue;
+    const u=snap.data();
+    const card=document.createElement('div');card.className='member-card';
+    card.innerHTML=`<img src="${av(u.photoURL)}" alt="${esc(u.displayName||'')}">
+      <div class="member-name">${esc(u.displayName||'Seeker')}</div>
+      <div class="member-role">${uid===team.leaderId?'⭐ Leader':'Member'}</div>
+      ${isLeader&&uid!==me.uid?`<button class="btn-kick" onclick="kickMember('${uid}')">Remove</button>`:''}`;
     grid.appendChild(card);
   }
 }
-window.kickMember = async uid => {
-  if (team.leaderId !== me.uid) return;
-  await updateDoc(doc(db,'teams',team.id), {members: arrayRemove(uid), memberCount: team.members.length - 1});
-  await updateDoc(doc(db,'users',uid), {teamId: null});
-  toast('Member removed', 'ok');
+window.kickMember=async uid=>{
+  if(team.leaderId!==me.uid)return;
+  await updateDoc(doc(db,'teams',team.id),{members:arrayRemove(uid),memberCount:team.members.length-1});
+  await updateDoc(doc(db,'users',uid),{teamId:null});toast('Member removed','ok');
 };
 
-/* ── Chat ── */
-function startChatListener() {
-  if (unsubChat) unsubChat();
-  const q = query(collection(db,'teams',team.id,'messages'), orderBy('createdAt','asc'), limit(120));
-  unsubChat = onSnapshot(q, snap => {
-    const box = document.getElementById('chat-box');
-    box.innerHTML = '';
-    if (snap.empty) { box.innerHTML = '<div class="empty-msg">No messages yet — say something!</div>'; return; }
-    snap.docs.forEach(d => {
-      const m = d.data(); const mine = m.senderId === me.uid;
-      const el = document.createElement('div'); el.className = 'chat-row' + (mine ? ' mine' : '');
-      el.innerHTML = `
-        <img src="${av(m.senderPhoto)}" class="chat-av" alt="">
+/* Chat */
+function startChatListener(){
+  if(unsubChat)unsubChat();
+  const q=query(collection(db,'teams',team.id,'messages'),orderBy('createdAt','asc'),limit(120));
+  unsubChat=onSnapshot(q,snap=>{
+    const box=document.getElementById('chat-box');box.innerHTML='';
+    if(snap.empty){box.innerHTML='<div class="empty-msg">No messages yet — say something!</div>';return;}
+    snap.docs.forEach(d=>{
+      const m=d.data();const mine=m.senderId===me.uid;
+      const el=document.createElement('div');el.className='chat-row'+(mine?' mine':'');
+      el.innerHTML=`<img src="${av(m.senderPhoto)}" class="chat-av" alt="">
         <div class="chat-bubble">
-          ${!mine ? `<div class="chat-sender">${esc(m.senderName||'')}</div>` : ''}
+          ${!mine?`<div class="chat-sender">${esc(m.senderName||'')}</div>`:''}
           <div class="chat-txt">${esc(m.text)}</div>
           <div class="chat-time">${fmtTime(m.createdAt)}</div>
         </div>`;
       box.appendChild(el);
     });
-    box.scrollTop = box.scrollHeight;
+    box.scrollTop=box.scrollHeight;
   });
 }
-window.chatKey = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); } };
-window.sendMsg = async () => {
-  const el = document.getElementById('chat-in');
-  const text = el.value.trim(); if (!text) return;
-  el.value = '';
-  await addDoc(collection(db,'teams',team.id,'messages'), {
-    text, senderId: me.uid,
-    senderName:  meData.displayName || me.displayName || 'Seeker',
-    senderPhoto: meData.photoURL || BLANK,
-    createdAt: serverTimestamp()
+window.chatKey=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}};
+window.sendMsg=async()=>{
+  const el=document.getElementById('chat-in');const text=el.value.trim();if(!text)return;
+  el.value='';
+  await addDoc(collection(db,'teams',team.id,'messages'),{
+    text,senderId:me.uid,
+    senderName:meData.displayName||me.displayName||'Seeker',
+    senderPhoto:meData.photoURL||BLANK,createdAt:serverTimestamp()
   });
 };
 
-/* ── Questions ── */
-function startQsListener() {
-  if (unsubQs) unsubQs();
-  const q = query(collection(db,'questions'), where('teamId','==',team.id), orderBy('createdAt','desc'));
-  unsubQs = onSnapshot(q, snap => {
-    allQuestions = [];
-    const list = document.getElementById('q-list'); list.innerHTML = '';
-    if (snap.empty) { list.innerHTML = '<div class="empty-msg">No questions yet — upload some above!</div>'; return; }
-    snap.docs.forEach(d => {
-      const qi = {id: d.id, ...d.data()}; allQuestions.push(qi);
-      const el = document.createElement('div'); el.className = 'q-item';
-      el.innerHTML = `
-        <div class="q-item-body">
-          <div class="q-item-text">${esc(qi.question)}</div>
-          <div class="q-item-ans">✓ ${esc(qi.options[qi.answer])}</div>
-          <div class="q-item-cat">${esc(qi.category || 'General')}</div>
-        </div>
-        ${qi.uploadedBy === me.uid
-          ? `<button class="btn-del" title="Delete" onclick="deleteQ('${d.id}')">🗑</button>` : ''}`;
+/* Questions */
+function startQsListener(){
+  if(unsubQs)unsubQs();
+  const q=query(collection(db,'questions'),where('teamId','==',team.id),orderBy('createdAt','desc'));
+  unsubQs=onSnapshot(q,snap=>{
+    allQuestions=[];const list=document.getElementById('q-list');list.innerHTML='';
+    if(snap.empty){list.innerHTML='<div class="empty-msg">No questions yet — upload some above!</div>';return;}
+    snap.docs.forEach(d=>{
+      const qi={id:d.id,...d.data()};allQuestions.push(qi);
+      const el=document.createElement('div');el.className='q-item';
+      el.innerHTML=`<div class="q-item-body">
+        <div class="q-item-text">${esc(qi.question)}</div>
+        <div class="q-item-ans">✓ ${esc(qi.options[qi.answer])}</div>
+        <div class="q-item-cat">${esc(qi.category||'General')}</div>
+      </div>
+      ${qi.uploadedBy===me.uid?`<button class="btn-del" title="Delete" onclick="deleteQ('${d.id}')">🗑</button>`:''}`;
       list.appendChild(el);
     });
   });
 }
-window.uploadQuestion = async () => {
-  const q   = document.getElementById('uq-q').value.trim();
-  const a   = document.getElementById('uq-a').value.trim();
-  const b   = document.getElementById('uq-b').value.trim();
-  const c   = document.getElementById('uq-c').value.trim();
-  const d   = document.getElementById('uq-d').value.trim();
-  const ans = document.getElementById('uq-ans').value;
-  const cat = document.getElementById('uq-cat').value.trim();
-  if (!q || !a || !b || !c || !d || ans === '') return toast('Please fill in all question fields', 'err');
-  await addDoc(collection(db,'questions'), {
-    question: q, options: [a,b,c,d], answer: parseInt(ans),
-    category: cat || 'General', teamId: team.id,
-    uploadedBy: me.uid, createdAt: serverTimestamp()
-  });
-  ['uq-q','uq-a','uq-b','uq-c','uq-d','uq-cat'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('uq-ans').value = '';
-  toast('Question uploaded!', 'ok');
+window.uploadQuestion=async()=>{
+  const q=document.getElementById('uq-q').value.trim();
+  const a=document.getElementById('uq-a').value.trim(),b=document.getElementById('uq-b').value.trim();
+  const c=document.getElementById('uq-c').value.trim(),d=document.getElementById('uq-d').value.trim();
+  const ans=document.getElementById('uq-ans').value;
+  const cat=document.getElementById('uq-cat').value.trim();
+  if(!q||!a||!b||!c||!d||ans==='')return toast('Please fill in all question fields','err');
+  await addDoc(collection(db,'questions'),{question:q,options:[a,b,c,d],answer:parseInt(ans),category:cat||'General',teamId:team.id,uploadedBy:me.uid,createdAt:serverTimestamp()});
+  ['uq-q','uq-a','uq-b','uq-c','uq-d','uq-cat'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('uq-ans').value='';
+  toast('Question uploaded!','ok');
 };
-window.deleteQ = async id => { await deleteDoc(doc(db,'questions',id)); toast('Question deleted'); };
+window.deleteQ=async id=>{await deleteDoc(doc(db,'questions',id));toast('Question deleted');};
 
-/* ════════════════════════ BATTLE SYSTEM ════════════════════════ */
+/* ═══════════════ CSV UPLOAD ═══════════════ */
+function parseCSVLine(line){
+  const cols=[];let cur='',inQuote=false;
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(ch==='"'){if(inQuote&&line[i+1]==='"'){cur+='"';i++;}else inQuote=!inQuote;}
+    else if(ch===','&&!inQuote){cols.push(cur);cur='';}
+    else cur+=ch;
+  }
+  cols.push(cur);return cols;
+}
+async function processCSVFile(file){
+  const text=await file.text();
+  const lines=text.split('\n').map(l=>l.trim()).filter(l=>l.length>0);
+  csvParsed=[];let skipped=0;
+  const startIdx=lines[0].toLowerCase().includes('question')&&lines[0].toLowerCase().includes('option')?1:0;
+  for(let i=startIdx;i<lines.length;i++){
+    const cols=parseCSVLine(lines[i]);
+    if(cols.length<6){skipped++;continue;}
+    const [question,a,b,c,d,ansRaw,...rest]=cols;
+    const cat=(rest[0]||'General').trim();
+    if(!question.trim()||!a.trim()||!b.trim()||!c.trim()||!d.trim()){skipped++;continue;}
+    let answer=parseInt(ansRaw.trim());
+    if(isNaN(answer)){const m={'a':0,'b':1,'c':2,'d':3};answer=m[ansRaw.trim().toLowerCase()];}
+    if(answer===undefined||answer<0||answer>3){skipped++;continue;}
+    csvParsed.push({question:question.trim(),options:[a.trim(),b.trim(),c.trim(),d.trim()],answer,category:cat||'General'});
+  }
+  const preview=document.getElementById('csv-preview');
+  const statusEl=document.getElementById('csv-status-text');
+  const confirmBtn=document.getElementById('csv-confirm-btn');
+  preview.classList.remove('hidden');
+  if(csvParsed.length===0){
+    statusEl.textContent=`No valid questions found.${skipped?` ${skipped} rows skipped.`:''}`;
+    confirmBtn.classList.add('hidden');
+  }else{
+    statusEl.textContent=`✓ Found ${csvParsed.length} valid question${csvParsed.length!==1?'s':''}${skipped?`, ${skipped} row${skipped!==1?'s':''} skipped`:''}`;
+    confirmBtn.classList.remove('hidden');
+  }
+}
+window.handleCSVUpload=async e=>{
+  const file=e.target.files[0];if(!file)return;
+  await processCSVFile(file);e.target.value='';
+};
+window.confirmCSVUpload=async()=>{
+  if(!csvParsed.length||!team)return;
+  const btn=document.getElementById('csv-confirm-btn');
+  btn.disabled=true;btn.textContent='Uploading…';
+  try{
+    await Promise.all(csvParsed.map(q=>addDoc(collection(db,'questions'),{...q,teamId:team.id,uploadedBy:me.uid,createdAt:serverTimestamp()})));
+    toast(`${csvParsed.length} questions uploaded!`,'ok');
+    document.getElementById('csv-preview').classList.add('hidden');
+    csvParsed=[];
+  }catch(err){toast('Upload failed: '+err.message,'err');}
+  btn.disabled=false;btn.textContent='Upload All Questions';
+};
 
-/* Show one of the four challenge sub-views */
-function showChState(state) {
-  ['ch-lobby','ch-waiting','ch-playing','ch-done']
-    .forEach(id => document.getElementById(id).classList.add('hidden'));
-  document.getElementById('ch-' + state).classList.remove('hidden');
+/* CSV drag & drop */
+const csvDrop=document.getElementById('csv-drop');
+csvDrop.addEventListener('dragover',e=>{e.preventDefault();csvDrop.classList.add('drag-over');});
+csvDrop.addEventListener('dragleave',()=>csvDrop.classList.remove('drag-over'));
+csvDrop.addEventListener('drop',async e=>{
+  e.preventDefault();csvDrop.classList.remove('drag-over');
+  const file=e.dataTransfer.files[0];
+  if(!file||!file.name.toLowerCase().endsWith('.csv'))return toast('Please drop a .csv file','err');
+  await processCSVFile(file);
+});
+
+/* ═══════════════ LEADERBOARD ═══════════════ */
+window.lbSwitch=(btn,which)=>{
+  document.querySelectorAll('.lb-toggle').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const showTeams=which==='teams';
+  document.getElementById('lb-teams').classList.toggle('hidden',!showTeams);
+  document.getElementById('lb-players').classList.toggle('hidden',showTeams);
+};
+async function loadLeaderboard(){
+  loadTeamsLB();loadPlayersLB();
+}
+async function loadTeamsLB(){
+  const el=document.getElementById('lb-teams');
+  el.innerHTML='<div class="lb-empty">Loading…</div>';
+  const snap=await getDocs(collection(db,'teams'));
+  const teams=snap.docs.map(d=>({id:d.id,...d.data()}))
+    .sort((a,b)=>(b.totalScore||0)-(a.totalScore||0)).slice(0,25);
+  if(!teams.length){el.innerHTML='<div class="lb-empty">No teams yet — create one to get started!</div>';return;}
+  const rankIcon=r=>r===1?'🥇':r===2?'🥈':r===3?'🥉':r;
+  const rankCls=r=>r===1?'gold':r===2?'silver':r===3?'bronze':'';
+  el.innerHTML=`<div class="lb-list">${teams.map((t,i)=>{
+    const r=i+1,mine=team&&t.id===team.id;
+    return `<div class="lb-row${mine?' lb-me':''}">
+      <div class="lb-rank ${rankCls(r)}">${rankIcon(r)}</div>
+      <img class="lb-av" src="${av(t.photoURL)}" alt="">
+      <div class="lb-info">
+        <div class="lb-name">${esc(t.name)}${mine?'<span class="lb-you">YOUR TEAM</span>':''}</div>
+        <div class="lb-sub">${t.memberCount||0} member${(t.memberCount||0)!==1?'s':''}</div>
+      </div>
+      <div class="lb-score-wrap">
+        <div class="lb-score">${t.totalScore||0}</div>
+        <div class="lb-score-lbl">pts</div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
+async function loadPlayersLB(){
+  const el=document.getElementById('lb-players');
+  el.innerHTML='<div class="lb-empty">Loading…</div>';
+  const snap=await getDocs(collection(db,'users'));
+  const users=snap.docs.map(d=>({id:d.id,...d.data()}))
+    .filter(u=>(u.totalScore||0)>0)
+    .sort((a,b)=>(b.totalScore||0)-(a.totalScore||0)).slice(0,25);
+  if(!users.length){el.innerHTML='<div class="lb-empty">No scores yet — play a battle or duel to appear here!</div>';return;}
+  const rankIcon=r=>r===1?'🥇':r===2?'🥈':r===3?'🥉':r;
+  const rankCls=r=>r===1?'gold':r===2?'silver':r===3?'bronze':'';
+  el.innerHTML=`<div class="lb-list">${users.map((u,i)=>{
+    const r=i+1,isMe=u.id===me.uid;
+    return `<div class="lb-row${isMe?' lb-me':''}">
+      <div class="lb-rank ${rankCls(r)}">${rankIcon(r)}</div>
+      <img class="lb-av" src="${av(u.photoURL)}" alt="">
+      <div class="lb-info">
+        <div class="lb-name">${esc(u.displayName||'Seeker')}${isMe?'<span class="lb-you">YOU</span>':''}</div>
+        <div class="lb-sub">${u.teamId?'In a team':'No team'}</div>
+      </div>
+      <div class="lb-score-wrap">
+        <div class="lb-score">${u.totalScore||0}</div>
+        <div class="lb-score-lbl">pts</div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
 }
 
-/* ── Create Battle ── */
-window.createBattle = async () => {
-  if (!team) return;
-  if ((team.members?.length || 0) < 2) return toast('Your team needs at least 2 members to start a battle', 'err');
-  const code = genCode();
-  const bRef = await addDoc(collection(db,'battles'), {
-    code, status: 'waiting',
-    teamA: { id: team.id, name: team.name, photoURL: team.photoURL, memberCount: team.members.length },
-    teamB: null,
-    questions: [],
-    scores: { [team.id]: 0 },
-    membersPlayed: [],
-    createdAt: serverTimestamp()
+/* ═══════════════ BATTLE SYSTEM ═══════════════ */
+function showChState(state){
+  ['ch-lobby','ch-waiting','ch-playing','ch-done'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  document.getElementById('ch-'+state).classList.remove('hidden');
+}
+
+/* Create Battle */
+window.createBattle=async()=>{
+  if(!team)return;
+  if((team.members?.length||0)<2)return toast('Your team needs at least 2 members to start a battle','err');
+  const code=genCode();
+  const bRef=await addDoc(collection(db,'battles'),{
+    code,status:'waiting',
+    teamA:{id:team.id,name:team.name,photoURL:team.photoURL,memberCount:team.members.length},
+    teamB:null,questions:[],scores:{[team.id]:0},membersPlayed:[],createdAt:serverTimestamp()
   });
-  currentBattle = { id: bRef.id, code, status:'waiting',
-    teamA: { id: team.id, name: team.name, photoURL: team.photoURL, memberCount: team.members.length },
-    teamB: null, questions: [], scores: { [team.id]: 0 }, membersPlayed: [] };
-  battlePlaying = false;
-  renderWaiting(); showChState('waiting');
-  startBattleListener(bRef.id);
+  currentBattle={id:bRef.id,code,status:'waiting',teamA:{id:team.id,name:team.name,photoURL:team.photoURL,memberCount:team.members.length},teamB:null,questions:[],scores:{[team.id]:0},membersPlayed:[]};
+  currentMode='battle';currentDuel=null;battlePlaying=false;
+  renderWaiting();showChState('waiting');startBattleListener(bRef.id);
 };
 
-/* ── Join Battle ── */
-window.joinBattle = async () => {
-  if (!team) return;
-  if ((team.members?.length || 0) < 2) return toast('Your team needs at least 2 members to join a battle', 'err');
-  const code = document.getElementById('bcode-in').value.trim().toUpperCase();
-  if (code.length !== 6) return toast('Enter a valid 6-character battle code', 'err');
-  const snap = await getDocs(query(collection(db,'battles'), where('code','==',code)));
-  if (snap.empty) return toast('Battle not found — check the code', 'err');
-  const bdoc = snap.docs[0]; const bd = bdoc.data();
-  if (bd.status !== 'waiting') return toast('This battle has already started or ended', 'err');
-  if (bd.teamA.id === team.id) return toast("That is your own battle code!", 'err');
-  if (bd.teamB !== null) return toast('Another team already joined this battle', 'err');
-  const tBData = { id: team.id, name: team.name, photoURL: team.photoURL, memberCount: team.members.length };
-  await updateDoc(doc(db,'battles',bdoc.id), {
-    teamB: tBData,
-    [`scores.${team.id}`]: 0
-  });
-  currentBattle = { id: bdoc.id, ...bd, teamB: tBData };
-  battlePlaying = false;
-  renderWaiting(); showChState('waiting');
-  startBattleListener(bdoc.id);
+/* Join Battle */
+window.joinBattle=async()=>{
+  if(!team)return;
+  if((team.members?.length||0)<2)return toast('Your team needs at least 2 members to join a battle','err');
+  const code=document.getElementById('bcode-in').value.trim().toUpperCase();
+  if(code.length!==6)return toast('Enter a valid 6-character battle code','err');
+  const snap=await getDocs(query(collection(db,'battles'),where('code','==',code)));
+  if(snap.empty)return toast('Battle not found — check the code','err');
+  const bdoc=snap.docs[0];const bd=bdoc.data();
+  if(bd.status!=='waiting')return toast('This battle has already started or ended','err');
+  if(bd.teamA.id===team.id)return toast("That is your own battle code!",'err');
+  if(bd.teamB!==null)return toast('Another team already joined this battle','err');
+  const tBData={id:team.id,name:team.name,photoURL:team.photoURL,memberCount:team.members.length};
+  await updateDoc(doc(db,'battles',bdoc.id),{teamB:tBData,[`scores.${team.id}`]:0});
+  currentBattle={id:bdoc.id,...bd,teamB:tBData};
+  currentMode='battle';currentDuel=null;battlePlaying=false;
+  renderWaiting();showChState('waiting');startBattleListener(bdoc.id);
 };
 
-/* ── Start Battle (leader only) ── */
-window.startBattle = async () => {
-  if (!currentBattle || !currentBattle.teamB) return toast('Waiting for opposing team to join', 'err');
-  if (team.leaderId !== me.uid) return toast('Only your team leader can start the battle', 'err');
-  // Guard against race condition
-  const fresh = await getDoc(doc(db,'battles',currentBattle.id));
-  if (!fresh.exists() || fresh.data().status === 'active') return;
-  // Pull questions from both teams + fill from built-ins if needed
-  const [snapA, snapB] = await Promise.all([
-    getDocs(query(collection(db,'questions'), where('teamId','==', currentBattle.teamA.id))),
-    getDocs(query(collection(db,'questions'), where('teamId','==', currentBattle.teamB.id)))
+/* Create 1v1 Duel */
+window.createDuel=async()=>{
+  const code=genCode();
+  const myInfo={id:me.uid,name:meData.displayName||me.displayName||'Seeker',photoURL:meData.photoURL||BLANK};
+  const ref=await addDoc(collection(db,'duels'),{code,status:'waiting',userA:myInfo,userB:null,questions:[],scores:{[me.uid]:0},createdAt:serverTimestamp()});
+  currentDuel={id:ref.id,code,status:'waiting',userA:myInfo,userB:null,questions:[],scores:{[me.uid]:0}};
+  currentMode='duel';currentBattle=null;battlePlaying=false;bQIdx=0;bMyScore=0;
+  renderWaiting();showChState('waiting');startDuelListener(ref.id);
+};
+
+/* Join 1v1 Duel */
+window.joinDuel=async()=>{
+  const code=document.getElementById('dcode-in').value.trim().toUpperCase();
+  if(code.length!==6)return toast('Enter a valid 6-character duel code','err');
+  const snap=await getDocs(query(collection(db,'duels'),where('code','==',code)));
+  if(snap.empty)return toast('Duel not found — check the code','err');
+  const ddoc=snap.docs[0];const dd=ddoc.data();
+  if(dd.status!=='waiting')return toast('This duel has already started or ended','err');
+  if(dd.userA.id===me.uid)return toast("That's your own duel code!",'err');
+  if(dd.userB!==null)return toast('Someone else already joined this duel','err');
+  const myInfo={id:me.uid,name:meData.displayName||me.displayName||'Seeker',photoURL:meData.photoURL||BLANK};
+  await updateDoc(doc(db,'duels',ddoc.id),{userB:myInfo,[`scores.${me.uid}`]:0});
+  currentDuel={id:ddoc.id,...dd,userB:myInfo};
+  currentMode='duel';currentBattle=null;battlePlaying=false;bQIdx=0;bMyScore=0;
+  renderWaiting();showChState('waiting');startDuelListener(ddoc.id);
+};
+
+/* Start wrapper */
+window.startBattleOrDuel=async()=>{
+  if(currentMode==='duel')await startDuel();else await startBattle();
+};
+
+/* Start Battle */
+window.startBattle=async()=>{
+  if(!currentBattle||!currentBattle.teamB)return toast('Waiting for opposing team to join','err');
+  if(team.leaderId!==me.uid)return toast('Only your team leader can start the battle','err');
+  const fresh=await getDoc(doc(db,'battles',currentBattle.id));
+  if(!fresh.exists()||fresh.data().status==='active')return;
+  const [snapA,snapB]=await Promise.all([
+    getDocs(query(collection(db,'questions'),where('teamId','==',currentBattle.teamA.id))),
+    getDocs(query(collection(db,'questions'),where('teamId','==',currentBattle.teamB.id)))
   ]);
-  let qs = [...snapA.docs, ...snapB.docs].map(d => {
-    const qd = d.data();
-    return { question: qd.question, options: qd.options, answer: qd.answer };
-  });
-  if (qs.length < 5) {
-    const existing = new Set(qs.map(q => q.question));
-    qs = [...qs, ...BIBLE_QS.filter(q => !existing.has(q.question))];
-  }
-  const questions = qs.sort(() => Math.random() - 0.5).slice(0, 10);
-  await updateDoc(doc(db,'battles',currentBattle.id), {
-    status: 'active', questions, startedAt: serverTimestamp()
-  });
+  let qs=[...snapA.docs,...snapB.docs].map(d=>{const qd=d.data();return{question:qd.question,options:qd.options,answer:qd.answer};});
+  if(qs.length<5){const ex=new Set(qs.map(q=>q.question));qs=[...qs,...BIBLE_QS.filter(q=>!ex.has(q.question))];}
+  const questions=qs.sort(()=>Math.random()-.5).slice(0,10);
+  await updateDoc(doc(db,'battles',currentBattle.id),{status:'active',questions,startedAt:serverTimestamp()});
 };
 
-/* ── Cancel Battle ── */
-window.cancelBattle = async () => {
-  if (currentBattle) {
-    try { await deleteDoc(doc(db,'battles',currentBattle.id)); } catch(e) {}
-    if (unsubBattle) { unsubBattle(); unsubBattle = null; }
-    currentBattle = null;
+/* Start Duel */
+async function startDuel(){
+  if(!currentDuel||!currentDuel.userB)return toast('Waiting for your opponent to join','err');
+  const fresh=await getDoc(doc(db,'duels',currentDuel.id));
+  if(!fresh.exists()||fresh.data().status==='active')return;
+  let qs=[...BIBLE_QS];
+  if(team){
+    const teamSnap=await getDocs(query(collection(db,'questions'),where('teamId','==',team.id)));
+    const teamQs=teamSnap.docs.map(d=>{const qd=d.data();return{question:qd.question,options:qd.options,answer:qd.answer};});
+    if(teamQs.length>0){const ex=new Set(teamQs.map(q=>q.question));qs=[...teamQs,...BIBLE_QS.filter(q=>!ex.has(q.question))];}
   }
-  showChState('lobby');
+  const questions=qs.sort(()=>Math.random()-.5).slice(0,10);
+  await updateDoc(doc(db,'duels',currentDuel.id),{status:'active',questions,startedAt:serverTimestamp()});
+}
+
+/* Cancel */
+window.cancelBattle=async()=>{
+  if(currentMode==='duel'){
+    if(currentDuel){try{await deleteDoc(doc(db,'duels',currentDuel.id));}catch(e){}if(unsubDuel){unsubDuel();unsubDuel=null;}currentDuel=null;}
+  }else{
+    if(currentBattle){try{await deleteDoc(doc(db,'battles',currentBattle.id));}catch(e){}if(unsubBattle){unsubBattle();unsubBattle=null;}currentBattle=null;}
+  }
+  currentMode='battle';showChState('lobby');
 };
 
-/* ── Real-time battle listener ── */
-function startBattleListener(battleId) {
-  if (unsubBattle) unsubBattle();
-  unsubBattle = onSnapshot(doc(db,'battles',battleId), snap => {
-    if (!snap.exists()) { currentBattle = null; showChState('lobby'); return; }
-    const data = snap.data();
-    currentBattle = { id: snap.id, ...data };
-    if (data.status === 'waiting') {
-      renderWaiting();
-    } else if (data.status === 'active') {
+/* Listeners */
+function startBattleListener(battleId){
+  if(unsubBattle)unsubBattle();
+  unsubBattle=onSnapshot(doc(db,'battles',battleId),snap=>{
+    if(!snap.exists()){currentBattle=null;showChState('lobby');return;}
+    const data=snap.data();currentBattle={id:snap.id,...data};
+    if(data.status==='waiting'){renderWaiting();}
+    else if(data.status==='active'){
       updateLiveScoreboard();
-      if (!battlePlaying) {
-        battlePlaying = true; bQIdx = 0; bMyScore = 0;
-        showChState('playing');
-        renderBattleQ();
-      }
+      if(!battlePlaying){battlePlaying=true;bQIdx=0;bMyScore=0;showChState('playing');renderBattleQ();}
+    }
+  });
+}
+function startDuelListener(duelId){
+  if(unsubDuel)unsubDuel();
+  unsubDuel=onSnapshot(doc(db,'duels',duelId),snap=>{
+    if(!snap.exists()){currentDuel=null;showChState('lobby');return;}
+    const data=snap.data();currentDuel={id:snap.id,...data};
+    if(data.status==='waiting'){renderWaiting();}
+    else if(data.status==='active'){
+      updateLiveScoreboard();
+      if(!battlePlaying){battlePlaying=true;bQIdx=0;bMyScore=0;showChState('playing');renderBattleQ();}
     }
   });
 }
 
-/* ── Render waiting room ── */
-function renderWaiting() {
-  if (!currentBattle) return;
-  const tA = currentBattle.teamA; const tB = currentBattle.teamB;
-  const isCreator = tA.id === team.id;
-  // Team A side
-  document.getElementById('ws-a-av').src   = av(tA.photoURL);
-  document.getElementById('ws-a-name').textContent  = tA.name;
-  document.getElementById('ws-a-count').textContent = tA.memberCount + ' members';
-  // Team B side
-  if (tB) {
-    document.getElementById('ws-b').classList.remove('empty');
-    document.getElementById('ws-b-av').src   = av(tB.photoURL);
-    document.getElementById('ws-b-name').textContent  = tB.name;
-    document.getElementById('ws-b-count').textContent = tB.memberCount + ' members';
-    document.getElementById('wait-sub').textContent   = 'Both teams present — a leader can start the battle!';
-    document.getElementById('wait-info').textContent  = '';
-    document.getElementById('btn-start-battle').disabled = (team.leaderId !== me.uid);
-  } else {
-    document.getElementById('ws-b').classList.add('empty');
-    document.getElementById('ws-b-av').src   = BLANK;
-    document.getElementById('ws-b-name').textContent  = 'Awaiting opponent…';
-    document.getElementById('ws-b-count').textContent = '';
-    document.getElementById('wait-sub').textContent   = 'Waiting for an opposing team to join…';
-    document.getElementById('wait-info').textContent  = isCreator
-      ? 'Share the code above with the opposing team leader'
-      : 'Waiting for ' + tA.name + ' to start the battle…';
-    document.getElementById('btn-start-battle').disabled = true;
+/* Render waiting room (handles both modes) */
+function renderWaiting(){
+  if(currentMode==='duel'){
+    if(!currentDuel)return;
+    const uA=currentDuel.userA,uB=currentDuel.userB,isCreator=uA.id===me.uid;
+    document.getElementById('wait-title').textContent='🗡 DUEL ROOM';
+    document.getElementById('ws-a-av').src=av(uA.photoURL);
+    document.getElementById('ws-a-name').textContent=uA.name;
+    document.getElementById('ws-a-count').textContent='1v1 Challenger';
+    if(uB){
+      document.getElementById('ws-b').classList.remove('empty');
+      document.getElementById('ws-b-av').src=av(uB.photoURL);
+      document.getElementById('ws-b-name').textContent=uB.name;
+      document.getElementById('ws-b-count').textContent='1v1 Challenger';
+      document.getElementById('wait-sub').textContent='Both challengers ready — either player can start!';
+      document.getElementById('wait-info').textContent='';
+      document.getElementById('btn-start-battle').disabled=false;
+    }else{
+      document.getElementById('ws-b').classList.add('empty');
+      document.getElementById('ws-b-av').src=BLANK;
+      document.getElementById('ws-b-name').textContent='Awaiting challenger…';
+      document.getElementById('ws-b-count').textContent='';
+      document.getElementById('wait-sub').textContent='Waiting for your opponent to join…';
+      document.getElementById('wait-info').textContent=isCreator?'Share the duel code above with your opponent':'';
+      document.getElementById('btn-start-battle').disabled=true;
+    }
+    document.getElementById('bcode-display').textContent=currentDuel.code;
+    document.getElementById('bcode-wrap').style.display=isCreator?'block':'none';
+    document.getElementById('btn-start-battle').textContent='Start Duel';
+  }else{
+    if(!currentBattle)return;
+    const tA=currentBattle.teamA,tB=currentBattle.teamB,isCreator=tA.id===team.id;
+    document.getElementById('wait-title').textContent='⚔ BATTLE ROOM';
+    document.getElementById('ws-a-av').src=av(tA.photoURL);
+    document.getElementById('ws-a-name').textContent=tA.name;
+    document.getElementById('ws-a-count').textContent=tA.memberCount+' members';
+    if(tB){
+      document.getElementById('ws-b').classList.remove('empty');
+      document.getElementById('ws-b-av').src=av(tB.photoURL);
+      document.getElementById('ws-b-name').textContent=tB.name;
+      document.getElementById('ws-b-count').textContent=tB.memberCount+' members';
+      document.getElementById('wait-sub').textContent='Both teams present — a leader can start the battle!';
+      document.getElementById('wait-info').textContent='';
+      document.getElementById('btn-start-battle').disabled=(team.leaderId!==me.uid);
+    }else{
+      document.getElementById('ws-b').classList.add('empty');
+      document.getElementById('ws-b-av').src=BLANK;
+      document.getElementById('ws-b-name').textContent='Awaiting opponent…';
+      document.getElementById('ws-b-count').textContent='';
+      document.getElementById('wait-sub').textContent='Waiting for an opposing team to join…';
+      document.getElementById('wait-info').textContent=isCreator?'Share the code above with the opposing team leader':'Waiting for '+tA.name+' to start the battle…';
+      document.getElementById('btn-start-battle').disabled=true;
+    }
+    document.getElementById('bcode-display').textContent=currentBattle.code;
+    document.getElementById('bcode-wrap').style.display=isCreator?'block':'none';
+    document.getElementById('btn-start-battle').textContent='Start Battle';
   }
-  // Battle code (visible to creator / Team A side only)
-  document.getElementById('bcode-display').textContent = currentBattle.code;
-  document.getElementById('bcode-wrap').style.display  = isCreator ? 'block' : 'none';
 }
-
-window.copyBattleCode = () => {
-  if (currentBattle) navigator.clipboard.writeText(currentBattle.code)
-    .then(() => toast('Battle code copied!', 'ok'));
+window.copyBattleCode=()=>{
+  const code=currentMode==='duel'?currentDuel?.code:currentBattle?.code;
+  if(code)navigator.clipboard.writeText(code).then(()=>toast('Code copied!','ok'));
 };
 
-/* ── Update live scoreboard during battle ── */
-function updateLiveScoreboard() {
-  if (!currentBattle) return;
-  const tA = currentBattle.teamA;
-  const tB = currentBattle.teamB || { name:'Opponent', photoURL:BLANK };
-  const sc = currentBattle.scores || {};
-  document.getElementById('bs-a-av').src   = av(tA.photoURL);
-  document.getElementById('bs-a-name').textContent = tA.name;
-  document.getElementById('bs-a-pts').textContent  = sc[tA.id] || 0;
-  document.getElementById('bs-b-av').src   = av(tB.photoURL);
-  document.getElementById('bs-b-name').textContent = tB.name;
-  document.getElementById('bs-b-pts').textContent  = tB.id ? (sc[tB.id] || 0) : 0;
+/* Live scoreboard */
+function updateLiveScoreboard(){
+  if(currentMode==='duel'&&currentDuel){
+    const uA=currentDuel.userA,uB=currentDuel.userB||{name:'Opponent',photoURL:BLANK,id:''};
+    const sc=currentDuel.scores||{};
+    document.getElementById('bs-a-av').src=av(uA.photoURL);document.getElementById('bs-a-name').textContent=uA.name;document.getElementById('bs-a-pts').textContent=sc[uA.id]||0;
+    document.getElementById('bs-b-av').src=av(uB.photoURL);document.getElementById('bs-b-name').textContent=uB.name;document.getElementById('bs-b-pts').textContent=uB.id?(sc[uB.id]||0):0;
+  }else if(currentBattle){
+    const tA=currentBattle.teamA,tB=currentBattle.teamB||{name:'Opponent',photoURL:BLANK};
+    const sc=currentBattle.scores||{};
+    document.getElementById('bs-a-av').src=av(tA.photoURL);document.getElementById('bs-a-name').textContent=tA.name;document.getElementById('bs-a-pts').textContent=sc[tA.id]||0;
+    document.getElementById('bs-b-av').src=av(tB.photoURL);document.getElementById('bs-b-name').textContent=tB.name;document.getElementById('bs-b-pts').textContent=tB.id?(sc[tB.id]||0):0;
+  }
 }
 
-/* ── Render a battle question ── */
-function renderBattleQ() {
-  if (bTimer) clearInterval(bTimer);
-  const qs = currentBattle.questions;
-  if (!qs || bQIdx >= qs.length) { showBattleResults(); return; }
-  const q = qs[bQIdx]; bAnswered = false;
-  const total = qs.length;
-  document.getElementById('bq-counter').textContent = `Question ${bQIdx + 1} / ${total}`;
-  document.getElementById('bq-mine').textContent    = `My score: ${bMyScore}`;
-  document.getElementById('bq-prog').style.width    = (bQIdx / total * 100) + '%';
-  document.getElementById('bq-text').textContent    = q.question;
-  const optsEl = document.getElementById('bq-opts'); optsEl.innerHTML = '';
-  ['A','B','C','D'].forEach((L, i) => {
-    const btn = document.createElement('button'); btn.className = 'q-opt';
-    btn.textContent = `${L}) ${q.options[i]}`;
-    btn.onclick = () => answerBattle(i);
+/* Render question */
+function renderBattleQ(){
+  if(bTimer)clearInterval(bTimer);
+  const activeGame=currentMode==='duel'?currentDuel:currentBattle;
+  if(!activeGame)return;
+  const qs=activeGame.questions;
+  if(!qs||bQIdx>=qs.length){showBattleResults();return;}
+  const q=qs[bQIdx];bAnswered=false;
+  const total=qs.length;
+  document.getElementById('bq-counter').textContent=`Question ${bQIdx+1} / ${total}`;
+  document.getElementById('bq-mine').textContent=`My score: ${bMyScore}`;
+  document.getElementById('bq-prog').style.width=(bQIdx/total*100)+'%';
+  document.getElementById('bq-text').textContent=q.question;
+  const optsEl=document.getElementById('bq-opts');optsEl.innerHTML='';
+  ['A','B','C','D'].forEach((L,i)=>{
+    const btn=document.createElement('button');btn.className='q-opt';
+    btn.textContent=`${L}) ${q.options[i]}`;btn.onclick=()=>answerBattle(i);
     optsEl.appendChild(btn);
   });
-  // 15-second countdown timer
-  let timeLeft = 15;
-  const circle = document.getElementById('b-tcircle');
-  const numEl  = document.getElementById('b-tnum');
-  const CIRC   = 131.9;
-  circle.style.strokeDashoffset = '0'; numEl.textContent = timeLeft;
-  bTimer = setInterval(() => {
-    timeLeft--;
-    numEl.textContent = timeLeft;
-    circle.style.strokeDashoffset = ((15 - timeLeft) / 15 * CIRC);
-    if (timeLeft <= 0) { clearInterval(bTimer); if (!bAnswered) answerBattle(-1); }
-  }, 1000);
+  let timeLeft=15;
+  const circle=document.getElementById('b-tcircle'),numEl=document.getElementById('b-tnum');
+  const CIRC=131.9;circle.style.strokeDashoffset='0';numEl.textContent=timeLeft;
+  bTimer=setInterval(()=>{
+    timeLeft--;numEl.textContent=timeLeft;
+    circle.style.strokeDashoffset=((15-timeLeft)/15*CIRC);
+    if(timeLeft<=0){clearInterval(bTimer);if(!bAnswered)answerBattle(-1);}
+  },1000);
 }
 
-/* ── Handle an answer ── */
-async function answerBattle(idx) {
-  if (bAnswered) return;
-  bAnswered = true;
-  if (bTimer) clearInterval(bTimer);
-  const q = currentBattle.questions[bQIdx];
-  const opts = document.querySelectorAll('#bq-opts .q-opt');
-  opts.forEach(o => o.disabled = true);
-  if (idx === q.answer) {
-    if (opts[idx]) opts[idx].classList.add('correct');
-    bMyScore += 10;
-    // Live team score update in Firestore
-    try { await updateDoc(doc(db,'battles',currentBattle.id), { [`scores.${team.id}`]: increment(10) }); }
-    catch(e) { /* non-fatal */ }
-  } else {
-    if (idx >= 0 && opts[idx]) opts[idx].classList.add('wrong');
-    if (opts[q.answer]) opts[q.answer].classList.add('correct');
+/* Answer */
+async function answerBattle(idx){
+  if(bAnswered)return;bAnswered=true;if(bTimer)clearInterval(bTimer);
+  const activeGame=currentMode==='duel'?currentDuel:currentBattle;
+  const q=activeGame.questions[bQIdx];
+  const opts=document.querySelectorAll('#bq-opts .q-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(idx===q.answer){
+    if(opts[idx])opts[idx].classList.add('correct');
+    bMyScore+=10;
+    if(currentMode==='duel'&&currentDuel){
+      try{await updateDoc(doc(db,'duels',currentDuel.id),{[`scores.${me.uid}`]:increment(10)});}catch(e){}
+    }else if(currentBattle){
+      try{await updateDoc(doc(db,'battles',currentBattle.id),{[`scores.${team.id}`]:increment(10)});}catch(e){}
+    }
+  }else{
+    if(idx>=0&&opts[idx])opts[idx].classList.add('wrong');
+    if(opts[q.answer])opts[q.answer].classList.add('correct');
   }
-  document.getElementById('bq-mine').textContent = `My score: ${bMyScore}`;
-  setTimeout(() => {
+  document.getElementById('bq-mine').textContent=`My score: ${bMyScore}`;
+  setTimeout(()=>{
     bQIdx++;
-    if (bQIdx < currentBattle.questions.length) renderBattleQ();
-    else showBattleResults();
-  }, 1600);
+    const qs=activeGame.questions;
+    if(bQIdx<qs.length)renderBattleQ();else showBattleResults();
+  },1600);
 }
 
-/* ── Show final results ── */
-async function showBattleResults() {
-  if (bTimer) clearInterval(bTimer);
-  try { await updateDoc(doc(db,'battles',currentBattle.id), { membersPlayed: arrayUnion(me.uid) }); }
-  catch(e) {}
-  // Fetch fresh scores
-  const freshSnap = await getDoc(doc(db,'battles',currentBattle.id));
-  const bd = freshSnap.exists() ? freshSnap.data() : currentBattle;
-  const sc = bd.scores || {};
-  const tA = bd.teamA;
-  const tB = bd.teamB || { id:'', name:'Opponent', photoURL:BLANK, memberCount:1 };
-  const sA = sc[tA.id] || 0; const sB = tB.id ? (sc[tB.id] || 0) : 0;
-  // Fill final cards
-  document.getElementById('fc-a-av').src   = av(tA.photoURL);
-  document.getElementById('fc-a-name').textContent = tA.name;
-  document.getElementById('fc-a-pts').textContent  = sA;
-  document.getElementById('fc-a-avg').textContent  = `avg ${Math.round(sA / (tA.memberCount || 1))} pts/player`;
-  document.getElementById('fc-b-av').src   = av(tB.photoURL);
-  document.getElementById('fc-b-name').textContent = tB.name;
-  document.getElementById('fc-b-pts').textContent  = sB;
-  document.getElementById('fc-b-avg').textContent  = `avg ${Math.round(sB / (tB.memberCount || 1))} pts/player`;
-  document.getElementById('res-contrib').textContent = `You personally scored ${bMyScore} pts for your team`;
-  // Winner logic
+/* Results */
+async function showBattleResults(){
+  if(bTimer)clearInterval(bTimer);
+  /* Update personal score */
+  try{
+    await updateDoc(doc(db,'users',me.uid),{totalScore:increment(bMyScore)});
+    if(meData)meData.totalScore=(meData.totalScore||0)+bMyScore;
+  }catch(e){}
   document.getElementById('fc-a').classList.remove('winner');
   document.getElementById('fc-b').classList.remove('winner');
-  if (sA === sB) {
-    document.getElementById('res-crown').textContent = '🤝';
-    document.getElementById('res-label').textContent  = "IT'S A DRAW!";
-    document.getElementById('res-winner').textContent = 'Both teams fought valiantly';
-  } else {
-    const winA = sA > sB;
-    document.getElementById('res-crown').textContent  = '🏆';
-    document.getElementById('res-label').textContent  = 'WINNER';
-    document.getElementById('res-winner').textContent = winA ? tA.name : tB.name;
-    document.getElementById(winA ? 'fc-a' : 'fc-b').classList.add('winner');
+
+  if(currentMode==='duel'){
+    try{await updateDoc(doc(db,'duels',currentDuel.id),{membersPlayed:arrayUnion(me.uid)});}catch(e){}
+    let dd;try{const s=await getDoc(doc(db,'duels',currentDuel.id));dd=s.exists()?s.data():currentDuel;}catch(e){dd=currentDuel;}
+    const sc=dd.scores||{},uA=dd.userA,uB=dd.userB||{id:'',name:'Opponent',photoURL:BLANK};
+    const sA=sc[uA.id]||0,sB=uB.id?(sc[uB.id]||0):0;
+    document.getElementById('fc-a-av').src=av(uA.photoURL);document.getElementById('fc-a-name').textContent=uA.name;document.getElementById('fc-a-pts').textContent=sA;document.getElementById('fc-a-avg').textContent='';
+    document.getElementById('fc-b-av').src=av(uB.photoURL);document.getElementById('fc-b-name').textContent=uB.name;document.getElementById('fc-b-pts').textContent=sB;document.getElementById('fc-b-avg').textContent='';
+    document.getElementById('res-contrib').textContent=`You scored ${bMyScore} pts in this duel`;
+    if(sA===sB){document.getElementById('res-crown').textContent='🤝';document.getElementById('res-label').textContent="IT'S A DRAW!";document.getElementById('res-winner').textContent='Both challengers fought valiantly';}
+    else{const winA=sA>sB;document.getElementById('res-crown').textContent='🏆';document.getElementById('res-label').textContent='WINNER';document.getElementById('res-winner').textContent=winA?uA.name:uB.name;document.getElementById(winA?'fc-a':'fc-b').classList.add('winner');}
+  }else{
+    try{
+      await updateDoc(doc(db,'battles',currentBattle.id),{membersPlayed:arrayUnion(me.uid)});
+      await updateDoc(doc(db,'teams',team.id),{totalScore:increment(bMyScore)});
+    }catch(e){}
+    let bd;try{const s=await getDoc(doc(db,'battles',currentBattle.id));bd=s.exists()?s.data():currentBattle;}catch(e){bd=currentBattle;}
+    const sc=bd.scores||{},tA=bd.teamA,tB=bd.teamB||{id:'',name:'Opponent',photoURL:BLANK,memberCount:1};
+    const sA=sc[tA.id]||0,sB=tB.id?(sc[tB.id]||0):0;
+    document.getElementById('fc-a-av').src=av(tA.photoURL);document.getElementById('fc-a-name').textContent=tA.name;document.getElementById('fc-a-pts').textContent=sA;document.getElementById('fc-a-avg').textContent=`avg ${Math.round(sA/(tA.memberCount||1))} pts/player`;
+    document.getElementById('fc-b-av').src=av(tB.photoURL);document.getElementById('fc-b-name').textContent=tB.name;document.getElementById('fc-b-pts').textContent=sB;document.getElementById('fc-b-avg').textContent=`avg ${Math.round(sB/(tB.memberCount||1))} pts/player`;
+    document.getElementById('res-contrib').textContent=`You personally scored ${bMyScore} pts for your team`;
+    if(sA===sB){document.getElementById('res-crown').textContent='🤝';document.getElementById('res-label').textContent="IT'S A DRAW!";document.getElementById('res-winner').textContent='Both teams fought valiantly';}
+    else{const winA=sA>sB;document.getElementById('res-crown').textContent='🏆';document.getElementById('res-label').textContent='WINNER';document.getElementById('res-winner').textContent=winA?tA.name:tB.name;document.getElementById(winA?'fc-a':'fc-b').classList.add('winner');}
   }
   showChState('done');
 }
 
-window.resetBattle = () => {
-  if (unsubBattle) { unsubBattle(); unsubBattle = null; }
-  currentBattle = null; battlePlaying = false;
-  bQIdx = 0; bMyScore = 0; bAnswered = false;
-  if (bTimer) { clearInterval(bTimer); bTimer = null; }
+window.resetBattle=()=>{
+  if(unsubBattle){unsubBattle();unsubBattle=null;}
+  if(unsubDuel){unsubDuel();unsubDuel=null;}
+  currentBattle=null;currentDuel=null;battlePlaying=false;
+  currentMode='battle';bQIdx=0;bMyScore=0;bAnswered=false;
+  if(bTimer){clearInterval(bTimer);bTimer=null;}
   showChState('lobby');
 };
 
-/* ════════════════════════ PROFILE PHOTOS ════════════════════════
-   Both profile and team photos are converted to base64 via canvas
-   and stored directly in Firestore — no Firebase Storage needed,
-   so no Storage rules to configure. Images are resized to 160×160px. */
-
-window.openProfileModal = () => {
-  document.getElementById('prof-av').src  = av(meData.photoURL);
-  document.getElementById('prof-name').value = meData.displayName || me.displayName || '';
+/* ═══════════════ PROFILE PHOTOS ═══════════════ */
+window.openProfileModal=()=>{
+  document.getElementById('prof-av').src=av(meData.photoURL);
+  document.getElementById('prof-name').value=meData.displayName||me.displayName||'';
   document.getElementById('prof-modal').classList.remove('hide');
 };
-window.closeProfileModal = () => document.getElementById('prof-modal').classList.add('hide');
-window.saveProfile = async () => {
-  const name = document.getElementById('prof-name').value.trim();
-  if (!name) return toast('Please enter a name', 'err');
-  await updateDoc(doc(db,'users',me.uid), {displayName: name});
-  await updateProfile(me, {displayName: name});
-  meData.displayName = name;
-  closeProfileModal(); toast('Profile updated!', 'ok');
+window.closeProfileModal=()=>document.getElementById('prof-modal').classList.add('hide');
+window.saveProfile=async()=>{
+  const name=document.getElementById('prof-name').value.trim();
+  if(!name)return toast('Please enter a name','err');
+  await updateDoc(doc(db,'users',me.uid),{displayName:name});
+  await updateProfile(me,{displayName:name});
+  meData.displayName=name;closeProfileModal();toast('Profile updated!','ok');
 };
-
-window.uploadProfPhoto = async e => {
-  const file = e.target.files[0]; if (!file) return;
+window.uploadProfPhoto=async e=>{
+  const file=e.target.files[0];if(!file)return;toast('Processing photo…');
+  try{
+    const b64=await imgToBase64(file,160);
+    await updateDoc(doc(db,'users',me.uid),{photoURL:b64});
+    meData.photoURL=b64;
+    document.getElementById('prof-av').src=b64;document.getElementById('nav-av').src=b64;
+    toast('Profile photo updated!','ok');
+  }catch(err){toast('Photo upload failed: '+err.message,'err');}
+  e.target.value='';
+};
+window.changeTeamPhoto=()=>{
+  if(team?.leaderId===me.uid)document.getElementById('file-team').click();
+  else toast('Only the team leader can change the team photo','err');
+};
+window.uploadTeamPhoto=async e=>{
+  const file=e.target.files[0];if(!file)return;
+  if(team.leaderId!==me.uid)return toast('Only the team leader can change the team photo','err');
   toast('Processing photo…');
-  try {
-    const b64 = await imgToBase64(file, 160);
-    await updateDoc(doc(db,'users',me.uid), {photoURL: b64});
-    meData.photoURL = b64;
-    document.getElementById('prof-av').src = b64;
-    document.getElementById('nav-av').src  = b64;
-    toast('Profile photo updated!', 'ok');
-  } catch (err) { toast('Photo upload failed: ' + err.message, 'err'); }
-  e.target.value = '';
+  try{
+    const b64=await imgToBase64(file,160);
+    await updateDoc(doc(db,'teams',team.id),{photoURL:b64});
+    team.photoURL=b64;document.getElementById('t-av').src=b64;document.getElementById('ban-av').src=b64;
+    toast('Team photo updated!','ok');
+  }catch(err){toast('Photo upload failed: '+err.message,'err');}
+  e.target.value='';
 };
 
-window.changeTeamPhoto = () => {
-  if (team?.leaderId === me.uid) document.getElementById('file-team').click();
-  else toast('Only the team leader can change the team photo', 'err');
-};
-window.uploadTeamPhoto = async e => {
-  const file = e.target.files[0]; if (!file) return;
-  if (team.leaderId !== me.uid) return toast('Only the team leader can change the team photo', 'err');
-  toast('Processing photo…');
-  try {
-    const b64 = await imgToBase64(file, 160);
-    await updateDoc(doc(db,'teams',team.id), {photoURL: b64});
-    team.photoURL = b64;
-    document.getElementById('t-av').src  = b64;
-    document.getElementById('ban-av').src = b64;
-    toast('Team photo updated!', 'ok');
-  } catch (err) { toast('Photo upload failed: ' + err.message, 'err'); }
-  e.target.value = '';
-};
-
-/* ── Cleanup all listeners ── */
-function cleanup() {
-  [unsubChat, unsubTeam, unsubQs, unsubBattle].forEach(u => { if (u) u(); });
-  unsubChat = unsubTeam = unsubQs = unsubBattle = null;
-  if (bTimer) { clearInterval(bTimer); bTimer = null; }
+/* Cleanup */
+function cleanup(){
+  [unsubChat,unsubTeam,unsubQs,unsubBattle,unsubDuel].forEach(u=>{if(u)u();});
+  unsubChat=unsubTeam=unsubQs=unsubBattle=unsubDuel=null;
+  if(bTimer){clearInterval(bTimer);bTimer=null;}
 }
 </script>
 </body>
